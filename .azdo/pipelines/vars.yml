@@ -1,8 +1,8 @@
 variables:
 - name: AppName
-  value: <ChangeMe>
+  value: FlyballRaceDay
 - name: ApiName
-  value: <Changeme>
+  value: FlyballRaceDay
 - name: TerraformDirectory
   value: infra
 - name: AzureLocation
