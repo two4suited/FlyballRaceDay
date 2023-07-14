@@ -11,14 +11,13 @@ pool:
 
 
 variables: 
-  - group: TerraformCloud
   # url: https://tfs.saif.com/SAIFCodeCollection/Framework%20Product/_git/Framework.CoreServices.LoggingApi?path=%2FPipelines%2Fbuild-vars.yml
   - template: vars.yml
 
 stages:  
 - stage: infrastructure
   jobs:
-  - template: templates/terraform-cli.yml
+  - template: templates/terraform-cloud-cli.yml
     parameters:
       TerraformDirectory: $(TerraformDirectory)
       ApplicationName: $(AppName)

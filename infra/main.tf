@@ -4,9 +4,9 @@ provider "azurerm" {
 
 terraform {
   cloud {
-    organization = "<ChangeMe>"
+    organization = "BS_INC"
     workspaces {
-      tags = ["TAG"]
+      tags = ["flyballraceday"]
 
     }
   }

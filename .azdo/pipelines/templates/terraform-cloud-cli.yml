@@ -23,7 +23,7 @@ jobs:
 - job: create_infrastructure
   displayName: Create Infrastructure
   steps: 
-  - script: touch $HOME/.terraformrc && echo 'credentials "app.terraform.io" { token = "$(terraformcloud-api-token)" }' > $HOME/.terraformrc
+  - script: touch $HOME/.terraformrc && echo 'credentials "app.terraform.io" { token = "$(tfcloudapikey)" }' > $HOME/.terraformrc
     condition: eq(variables['Agent.OS'],'Linux')
     displayName: 'Create CLI File in Linux'
 
@@ -33,7 +33,7 @@ jobs:
     inputs:
       targetType: 'inline'
       script: |
-        New-Item -Path $env:APPDATA -Name "terraform.rc" -ItemType "file" -Value "credentials ""app.terraform.io"" { token = ""$(terraformcloud-api-token)"" }" -Force
+        New-Item -Path $env:APPDATA -Name "terraform.rc" -ItemType "file" -Value "credentials ""app.terraform.io"" { token = ""$(tfcloudapikey)"" }" -Force
     
   - task: CmdLine@2
     displayName: Terraform
