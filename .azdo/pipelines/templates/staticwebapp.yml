@@ -5,6 +5,8 @@ parameters:
   type: string
 - name: ConfigFileLocation
   type: string
+- name: OutputLocation
+  type: string
 
 stages:
 - stage: Deploy
@@ -17,7 +19,7 @@ stages:
         workingDirectory: '$(System.DefaultWorkingDirectory)' 
         app_location: ${{parameters.AppLocation}}
         #app_build_command: # string. App build command. 
-        #output_location: # string. Output location. 
+        output_location: ${{parameters.OutputLocation}} 
         api_location: ${{parameters.ApiLocation}}
         #api_build_command: # string. Api build command. 
         #routes_location: # string. Routes location. 
