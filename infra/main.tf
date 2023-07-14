@@ -22,6 +22,6 @@ resource "azurerm_resource_group" "resourcegroup" {
 
 resource "azurerm_static_site" "staticwebapp" {
   name                = "${var.application_name}-${var.environment}"
-  resource_group_name = azurerm_resource_group.resourcegroup
+  resource_group_name = azurerm_resource_group.resourcegroup.name
   location            = var.location
 }
