@@ -34,6 +34,5 @@ resource "azurerm_api_management" "apimanagement" {
   publisher_name      = "Brian Sheridan"
   publisher_email     = "brian.sheridan@gmail.com"
 
-  sku_name = "Consumption_0"
-  web_app_id = azurerm_static_site.staticwebapp.id
+  sku_name = "Consumption_0" 
 }
