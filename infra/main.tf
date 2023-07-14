@@ -24,5 +24,15 @@ resource "azurerm_static_site" "staticwebapp" {
   name                = "${var.application_name}-${var.environment}"
   resource_group_name = azurerm_resource_group.resourcegroup.name
   location            = var.location
-  sku_tier = Standard
+  sku_tier = "Standard"
+}
+
+resource "azurerm_api_management" "example" {
+  name                = "${var.application_name}${var.environment}"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.resourcegroup.name
+  publisher_name      = "Brian Sheridan"
+  publisher_email     = "brian.sheridan@gmail.com"
+
+  sku_name = "Consumption"
 }
