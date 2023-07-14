@@ -12,7 +12,7 @@ variables:
 - name: TerraformCommandOptions
   value: -var "application_name=$(appName)" -var "location=$(AzureLocation)" -var "environment=$(environment)"
 - name: ApiLocation
-  value: src/api
+  value: /src/api
 - name: AppLocation
   value: src/Client
 - name: ConfigFileLocation
