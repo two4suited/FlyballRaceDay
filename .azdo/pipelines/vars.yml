@@ -6,7 +6,7 @@ variables:
 - name: TerraformDirectory
   value: infra
 - name: AzureLocation
-  value: westus
+  value: westus2
 - name: environment
   value: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
 - name: TerraformCommandOptions
