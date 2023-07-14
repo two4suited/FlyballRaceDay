@@ -15,10 +15,10 @@ stages:
     - task: AzureStaticWebApp@0
       inputs:
         workingDirectory: '$(System.DefaultWorkingDirectory)' 
-        app_location: ${{parameters.AppName}}
+        app_location: ${{parameters.AppLocation}}
         #app_build_command: # string. App build command. 
         #output_location: # string. Output location. 
-        api_location: ${{parameters.ApiName}}
+        api_location: ${{parameters.ApiLocation}}
         #api_build_command: # string. Api build command. 
         #routes_location: # string. Routes location. 
         config_file_location: ${{parameters.ConfigFileLocation}}
