@@ -27,7 +27,7 @@ param webServiceName string = ''
 param apimServiceName string = ''
 
 @description('Flag to use Azure API Management to mediate the calls between the Web frontend and the backend API')
-param useAPIM bool = false
+param useAPIM bool = true
 
 @description('Id of the user or app to assign application roles')
 param principalId string = ''
