@@ -1,0 +1,33 @@
+parameters:
+- name: AppLocation
+  type: string
+- name: ApiLocation
+  type: string
+- name: ConfigFileLocation
+  type: string
+
+stages:
+- stage: Deploy_${{parameters.ApiName}}
+  jobs:
+  - job: Deploy_${{parameters.ApiName}}
+    displayName: 'Build and publish ${{parameters.ApiName}} function app'
+    steps:
+  - task: AzureStaticWebApp@0
+    inputs:
+      workingDirectory: '$(System.DefaultWorkingDirectory)' 
+      app_location: ${{parameters.AppName}}
+      #app_build_command: # string. App build command. 
+      #output_location: # string. Output location. 
+      api_location: ${{parameters.ApiName}}
+      #api_build_command: # string. Api build command. 
+      #routes_location: # string. Routes location. 
+      config_file_location: ${{parameters.ConfigFileLocation}}
+      #skip_app_build: # boolean. Skip app build. 
+      #skip_api_build: # boolean. Skip api build. 
+      #is_static_export: # boolean. Set static export. 
+      #verbose: # boolean. Verbose. 
+      #build_timeout_in_minutes: # string. Build timeout in minutes. 
+      #azure_static_web_apps_api_token: # string. Azure Static Web Apps api token. 
+      #deployment_environment: # string. Deployment Environment. 
+      #production_branch: # string. Production Branch. 
+      #data_api_location: # string. Data api location.

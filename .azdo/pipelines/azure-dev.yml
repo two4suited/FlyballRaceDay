@@ -24,9 +24,8 @@ stages:
       ApplicationName: $(AppName)
       TerraformCommandOptions: $(TerraformCommandOptions)
       environment: $(environment)
-stages:  
-- template: templates/azurefunction.yml
+- template: templates/staticwebapp.yml
   parameters:
-    AppName: $(AppName)
-    ApiName: $(ApiName)  
-    SourceDirectory: $(FunctionSourceDirectory)
+    AppLocation: $(AppLocation)
+    ApiLocation: $(ApiLocation)  
+    ConfigFileLocation: $(ConfigFileLocation)
