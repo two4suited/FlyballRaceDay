@@ -23,8 +23,8 @@ stages:
       ApplicationName: $(AppName)
       TerraformCommandOptions: $(TerraformCommandOptions)
       environment: $(environment)
-# - template: templates/staticwebapp.yml
-#   parameters:
-#     AppLocation: $(AppLocation)
-#     ApiLocation: $(ApiLocation)  
-#     ConfigFileLocation: $(ConfigFileLocation)
+- template: templates/staticwebapp.yml
+  parameters:
+    AppLocation: $(AppLocation)
+    ApiLocation: $(ApiLocation)  
+    ConfigFileLocation: $(ConfigFileLocation)

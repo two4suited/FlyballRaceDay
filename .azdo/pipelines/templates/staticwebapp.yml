@@ -27,7 +27,7 @@ stages:
       #is_static_export: # boolean. Set static export. 
       #verbose: # boolean. Verbose. 
       #build_timeout_in_minutes: # string. Build timeout in minutes. 
-      #azure_static_web_apps_api_token: # string. Azure Static Web Apps api token. 
+      azure_static_web_apps_api_token: $(swa-token)
       #deployment_environment: # string. Deployment Environment. 
       #production_branch: # string. Production Branch. 
       #data_api_location: # string. Data api location.
