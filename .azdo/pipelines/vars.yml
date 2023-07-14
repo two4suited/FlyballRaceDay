@@ -16,4 +16,4 @@ variables:
 - name: AppLocation
   value: src/Client
 - name: ConfigFileLocation
-  value: src
+  value: src/Client
