@@ -18,4 +18,4 @@ variables:
 - name: ConfigFileLocation
   value: src/Client
 - name: OutputLocation
-  value: src/Client/bin/Release/net7.0/wwwroot
+  value: wwwroot
