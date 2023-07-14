@@ -1,0 +1,234 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Flyball Race Day API
+  description: API for Flyball Race Day
+
+servers:
+- url: https://api.example.com/v1
+
+paths:
+  /tournament:
+   get:
+    summary: Get All Current Tournaments
+    operationId: getalltournaments
+    tags:
+      - "Tournament"
+    responses:
+      '200':
+        description: Got All Active Tournaments
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Tournament'
+      '500':
+        description: Error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'
+   post:
+    summary: Create New Tournament
+    operationId: createTournament
+    tags:
+      - "Tournament"
+    responses:
+     '200':
+       description: Tournament Created
+       content:
+         application/json:
+           schema:
+             $ref: '#/components/schemas/Tournament'
+     '500':
+        description: Error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Error'
+  /tournament/{id}:
+    put:
+      summary: Update Tournament
+      operationId: updateTournament
+      tags:
+        - "Tournament"
+      parameters:
+         - name: id
+           in: path
+           required: true  
+           schema:
+             type: string
+      responses:
+        '200':
+          description: Update Tournament
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tournament'
+        '500':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+       summary: Delete Tournament
+       operationId: deleteTournament
+       parameters:
+        - name: id
+          in: path
+          required: true  
+          schema:
+            type: string
+       tags:
+         - "Tournament"
+       responses:
+         '200':
+           description: Deleted Tournament
+           content:
+             application/json:
+               schema:
+                $ref: '#/components/schemas/Message'
+         '500':
+           description: Error
+           content:
+            application/json:
+               schema:
+                 $ref: '#/components/schemas/Error'
+  /schedule:
+    post:
+      summary: Upload Schedule
+      operationId: createSchedule
+      tags: ["Schedule"]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Race'
+      responses:
+        '200':
+          description: Tournament Created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Race'
+        '500':
+            description: Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+  /schedule/{id}:
+      get:
+        summary: Get Schedule by id
+        operationId: getschedulebyid
+        tags: ["Schedule"]
+        parameters:
+          - name: id
+            in: path
+            required: true  
+            schema:
+              type: string
+        responses:
+          '200':
+            description: Get All Races for Tournament
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Race'
+          '500':
+            description: Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+        
+
+components:
+  schemas:
+    Tournament:
+      type: object
+      properties:
+        Id:
+          type: string
+          example: "1"
+        EventName:
+          type: string
+          example: "Tourney 1"
+        ScheduleId:
+          type: string
+          example: "1"        
+        RaceScreenID:
+          type: string
+          example: "1"
+        StartDate:
+          type: string
+          example: 1/1/2010
+        EndDate: 
+          type: string
+          example: 1/2/2010
+        Lanes: 
+          type: string
+          example: 2
+    Error:
+      type: object
+      properties:
+        ErrorCode: 
+          type: string
+          example: "500"
+        ErrorMessage:
+          type: string
+          example: "Not able to get to databse"
+    Race:
+      type: object
+      properties:
+        ScheduleId:
+          type: string
+          example: "1"
+        LeftTeam:
+          type: string
+          example: "Left Team"
+        RightTeam:
+          type: string
+          example: "Right Team"
+        Format:
+          type: string
+          example: "4/4"
+        Division:
+          type: string
+          example: "Open 1"
+        Breakout: 
+          type: string
+          example: "N/A"
+        Break:
+          type: string
+          example: "true"
+        BreakTime:
+          type: string
+          description: Break Time in Minutes
+          example: "5"
+    Message:
+      type: object
+      properties:
+        Message:
+          type: string
+          example: "This is Message"
+    Ring:
+      type: object
+      properties:
+        Name:
+          type: string
+          example: "Green Ring"
+        Color:
+          type: string
+          example: "Green"

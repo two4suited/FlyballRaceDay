@@ -27,12 +27,30 @@ resource "azurerm_static_site" "staticwebapp" {
   sku_tier = "Standard"
 }
 
-resource "azurerm_api_management" "apimanagement" {
-  name                = "${var.application_name}${var.environment}"
-  location            = var.location
-  resource_group_name = azurerm_resource_group.resourcegroup.name
-  publisher_name      = "Brian Sheridan"
-  publisher_email     = "brian.sheridan@gmail.com"
+module "api_management" {  
+  source            = "./apim"
+  application_name  = var.application_name
+  location          = var.location
+  resouregroup_name = azurerm_resource_group.resourcegroup.name
+  environment       = var.environment
+  module_tags       = local.common_tags
+  publisher_name    = "Brian Sheridan"
+  publisher_email   = "brian.sheridan@gmail.com"
+  SKU_Name          = "Consumption_0"
+}
 
-  sku_name = "Consumption_0" 
+module "apis" {
+  source            = "./apis"  
+  ApiManagementName = module.api_management.API_Management_Name
+  ResourceGroupName = azurerm_resource_group.resourcegroup.name
+  ApplicationName = var.application_name 
+}
+
+module "Database" {  
+  source = "./cosmos"
+  ResourceGroupName = azurerm_resource_group.resourcegroup.name
+  module_tags = local.common_tags
+  application_name = var.application_name
+  location = var.location
+  environment = var.environment
 }
