@@ -28,4 +28,4 @@ stages:
     AppLocation: $(AppLocation)
     ApiLocation: $(ApiLocation)  
     ConfigFileLocation: $(ConfigFileLocation)
-    outputlocation: $(AppLocation)
+    outputlocation: $(OutputLocation)
