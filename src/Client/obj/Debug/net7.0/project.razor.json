@@ -1,0 +1,57 @@
+{
+  "SerializedFilePath": "/workspaces/azd-terraform-csharp-sql-swa-func/src/Client/obj/Debug/net7.0/project.razor.json",
+  "FilePath": "/workspaces/azd-terraform-csharp-sql-swa-func/src/Client/Client.csproj",
+  "Configuration": {
+    "ConfigurationName": "Default",
+    "LanguageVersion": "6.0",
+    "Extensions": []
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 1100
+  },
+  "RootNamespace": "BlazorApp.Client",
+  "Documents": [
+    {
+      "FilePath": "/workspaces/azd-terraform-csharp-sql-swa-func/src/Client/Pages/FetchData.razor",
+      "TargetPath": "Pages\\FetchData.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/azd-terraform-csharp-sql-swa-func/src/Client/Shared/NavMenu.razor",
+      "TargetPath": "Shared\\NavMenu.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/azd-terraform-csharp-sql-swa-func/src/Client/_Imports.razor",
+      "TargetPath": "_Imports.razor",
+      "FileKind": "componentImport"
+    },
+    {
+      "FilePath": "/workspaces/azd-terraform-csharp-sql-swa-func/src/Client/Pages/Counter.razor",
+      "TargetPath": "Pages\\Counter.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/azd-terraform-csharp-sql-swa-func/src/Client/Shared/MainLayout.razor",
+      "TargetPath": "Shared\\MainLayout.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/azd-terraform-csharp-sql-swa-func/src/Client/App.razor",
+      "TargetPath": "App.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/azd-terraform-csharp-sql-swa-func/src/Client/Shared/SurveyPrompt.razor",
+      "TargetPath": "Shared\\SurveyPrompt.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/azd-terraform-csharp-sql-swa-func/src/Client/Pages/Index.razor",
+      "TargetPath": "Pages\\Index.razor",
+      "FileKind": "component"
+    }
+  ],
+  "SerializationFormat": "0.3"
+}

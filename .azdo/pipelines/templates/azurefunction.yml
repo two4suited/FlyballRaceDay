@@ -1,0 +1,30 @@
+parameters:
+- name: SourceDirectory
+  type: string
+- name: ApiName
+  type: string
+- name: AppName
+  type: string
+
+
+
+stages:
+- stage: Deploy_${{parameters.ApiName}}
+  jobs:
+  - job: Deploy_${{parameters.ApiName}}
+    displayName: 'Build and publish ${{parameters.ApiName}} function app'
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: 'Publish ${{parameters.ApiName}} Function'
+      inputs:
+        command: publish
+        publishWebProjects: false
+        projects: '${{parameters.SourceDirectory}}/${{parameters.ApiName}}/*.csproj'
+        arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
+    - task: AzureFunctionApp@1
+      displayName: Deploy ${{parameters.ApiName}} Function App
+      inputs:
+        azureSubscription: 'Pay-As-You-Go(3bd10068-0c35-4ed1-8436-1b052ac96a2b)'
+        appType: 'functionAppLinux'
+        appName: '${{parameters.AppName}}-${{parameters.ApiName}}'
+        package: '$(Build.ArtifactStagingDirectory)/${{parameters.ApiName}}.zip'

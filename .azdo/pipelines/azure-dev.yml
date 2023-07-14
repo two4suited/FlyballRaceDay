@@ -1,0 +1,32 @@
+name: $(Date:yyyy).$(Date:MMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+    - main    
+
+pool:
+  vmimage: "ubuntu-latest"
+
+
+
+variables: 
+  - group: TerraformCloud
+  # url: https://tfs.saif.com/SAIFCodeCollection/Framework%20Product/_git/Framework.CoreServices.LoggingApi?path=%2FPipelines%2Fbuild-vars.yml
+  - template: vars.yml
+
+stages:  
+- stage: infrastructure
+  jobs:
+  - template: templates/terraform-cli.yml
+    parameters:
+      TerraformDirectory: $(TerraformDirectory)
+      ApplicationName: $(AppName)
+      TerraformCommandOptions: $(TerraformCommandOptions)
+      environment: $(environment)
+stages:  
+- template: templates/azurefunction.yml
+  parameters:
+    AppName: $(AppName)
+    ApiName: $(ApiName)  
+    SourceDirectory: $(FunctionSourceDirectory)

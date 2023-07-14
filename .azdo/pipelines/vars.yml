@@ -1,0 +1,15 @@
+variables:
+- name: AppName
+  value: <ChangeMe>
+- name: ApiName
+  value: <Changeme>
+- name: TerraformDirectory
+  value: infra
+- name: AzureLocation
+  value: westus
+- name: environment
+  value: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
+- name: TerraformCommandOptions
+  value: -var "application_name=$(appName)" -var "location=$(AzureLocation)" -var "environment=$(environment)"
+- name: FunctionSourceDirectory
+  value: src/Functions

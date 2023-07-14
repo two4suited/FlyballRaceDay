@@ -1,0 +1,53 @@
+parameters:
+- name: TerraformDirectory
+  type: string
+  default: infrastructure
+- name: AzureLocation
+  type: string
+  default: $(AzureLocation)
+- name: ApplicationName
+  type: string
+- name: AzureServiceConnection
+  type: string
+  default: $(AzureServiceConnection)
+- name: TerraformTags
+  type: string
+  default: -var "branchName=$(Build.SourceBranch)" -var "buildId=$(Build.BuildId)" -var "buildNumber=$(Build.BuildNumber)" -var "repository=$(Build.Repository.Name)" -var "deployedBy=$(Build.RequestedFor)" -var "commitId=$(Build.SourceVersion)"
+- name: TerraformCommandOptions
+  type: string
+- name: environment
+  type: string
+ 
+
+jobs:
+- job: create_infrastructure
+  displayName: Create Infrastructure
+  steps: 
+  - script: touch $HOME/.terraformrc && echo 'credentials "app.terraform.io" { token = "$(terraformcloud-api-token)" }' > $HOME/.terraformrc
+    condition: eq(variables['Agent.OS'],'Linux')
+    displayName: 'Create CLI File in Linux'
+
+  - task: PowerShell@2    
+    condition: ne(variables['Agent.OS'],'Linux')
+    displayName: 'Create CLI File'
+    inputs:
+      targetType: 'inline'
+      script: |
+        New-Item -Path $env:APPDATA -Name "terraform.rc" -ItemType "file" -Value "credentials ""app.terraform.io"" { token = ""$(terraformcloud-api-token)"" }" -Force
+    
+  - task: CmdLine@2
+    displayName: Terraform
+    inputs:
+      script: |
+        echo "Set TF_Workspace to ${{parameters.ApplicationName}}-Local"
+        export TF_WORKSPACE=${{parameters.ApplicationName}}-local
+        echo "Change Directory to ${{parameters.TerraformDirectory}}"
+        cd $(System.DefaultWorkingDirectory)/${{parameters.TerraformDirectory}}
+        echo "Initialize Terraform"
+        terraform init          
+        echo "Unset TF_Workspace"
+        unset TF_WORKSPACE
+        echo "Select or Create Workspace ${{parameters.ApplicationName}}-${{parameters.environment}}"
+        terraform workspace select -or-create ${{parameters.ApplicationName}}-${{parameters.environment}}
+        echo "Apply"
+        terraform apply -auto-approve ${{parameters.TerraformTags}} ${{parameters.TerraformCommandOptions}}
