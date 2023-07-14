@@ -1,6 +1,6 @@
 variable "application_name" {
   type    = string 
-
+  default = "changeme"
 }
 variable "location" {
   type    = string
