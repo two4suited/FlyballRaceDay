@@ -44,6 +44,6 @@ output "cosmos_connection" {
 }
 
 output "CosmosDBName" {
-    value = azurerm_cosmosdb_account.cosmosdb.name
+    value = azurerm_cosmosdb_mongo_database.database.name
 }
 
