@@ -47,11 +47,11 @@ module "apis" {
   ApplicationName = var.application_name 
 }
 
-module "Database" {  
-  source = "./cosmos"
-  ResourceGroupName = azurerm_resource_group.resourcegroup.name
-  module_tags = local.common_tags
-  application_name = var.application_name
-  location = var.location
-  environment = var.environment
-}
+# module "Database" {  
+#   source = "./cosmos"
+#   ResourceGroupName = azurerm_resource_group.resourcegroup.name
+#   module_tags = local.common_tags
+#   application_name = var.application_name
+#   location = var.location
+#   environment = var.environment
+# }
