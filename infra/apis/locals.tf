@@ -3,11 +3,11 @@ locals {
 
   api_policies = [
      {
-      operationid         = "getClubs"
-      mocking             = false
+      operationid         = "getalltournaments"
+      mocking             = true
       mockingResponseCode = "200"
-      backendService      = local.backEndService
-      backendRewrite      = "GetAllClubs"    
+      backendService      = ""
+      backendRewrite      = ""    
     }
     ]
   }
