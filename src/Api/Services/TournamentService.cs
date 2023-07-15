@@ -21,12 +21,13 @@ public class TournamentService : BaseService<TournamentDataModel>,ITournamentSer
 
     public async Task Create(TournamentDataModel tournament) =>
         await Collection.InsertOneAsync(tournament);
-    
+
 
     public async Task Update(TournamentDataModel tournament)
     {
-        throw new System.NotImplementedException();
-    }
+        var filter = Builders<TournamentDataModel>.Filter.Where(x => x.Id == tournament.Id);
+        await Collection.ReplaceOneAsync(filter,tournament);  
+    } 
 
     public async Task Delete(string tournamentId)
     {

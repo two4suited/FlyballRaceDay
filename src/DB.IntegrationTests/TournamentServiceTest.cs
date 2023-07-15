@@ -39,4 +39,19 @@ public class TournamentServiceTest : IClassFixture<DatabaseFixture>
         var documents = await _collection.Find(filter).FirstAsync();
         documents.EventName.Should().Be(tournamentDataModel.EventName);
     }
+
+    [Theory, AutoData]
+    public async Task Update_Should_UpdateEventName(TournamentDataModel tournamentDataModel)
+    {
+        string newName = "I Am New";
+        await _collection.InsertOneAsync(tournamentDataModel);
+
+        tournamentDataModel.EventName = "I Am New";
+
+        await _sut.Update(tournamentDataModel);
+        
+        var filter = Builders<TournamentDataModel>.Filter.Where(x => x.Id == tournamentDataModel.Id);
+        var documents = await _collection.Find(filter).FirstAsync();
+        documents.EventName.Should().Be(newName);
+    }
 }

@@ -403,3 +403,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+.DS_Store
+src/Client/obj/Debug/net7.0/Client.GeneratedMSBuildEditorConfig.editorconfig
+src/Client/obj/Debug/net7.0/project.razor.json
