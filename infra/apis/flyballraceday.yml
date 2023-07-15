@@ -75,7 +75,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-       summary: Delete Tournament
+       summary: Tournament - Delete
        operationId: deleteTournament
        parameters:
         - name: id
@@ -154,7 +154,7 @@ paths:
                   $ref: '#/components/schemas/Error'
   /races:
     get:
-      description: 'Races - Upcoming'
+      summary: Races - Upcoming
       operationId: getraces
       tags: ["Races"]      
       responses:
