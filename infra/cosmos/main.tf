@@ -30,7 +30,7 @@ resource "azurerm_cosmosdb_account" "cosmosdb" {
   }
 }
 
-resource "azurerm_cosmosdb_sql_database" "database" {
+resource "azurerm_cosmosdb_mongo_database" "database" {
   depends_on = [ azurerm_cosmosdb_account.cosmosdb ]
   name                = "${lower(var.application_name)}"
   resource_group_name = var.ResourceGroupName
@@ -44,6 +44,6 @@ output "cosmos_connection" {
 }
 
 output "CosmosDBName" {
-    value = azurerm_cosmosdb_sql_database.database.name
+    value = azurerm_cosmosdb_account.cosmosdb.name
 }
 
