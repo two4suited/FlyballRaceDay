@@ -158,7 +158,7 @@ paths:
       operationId: getraces
       tags: ["Races"]
       parameters:
-       - name: tournamentid
+       - name: tournamentId
          in: path
          required: true
          schema:
