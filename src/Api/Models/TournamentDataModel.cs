@@ -8,7 +8,6 @@ namespace ApiIsolated.Models;
 public class TournamentDataModel : ITournament
 {
     [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; } = Guid.NewGuid().ToString();
 
     public string EventName { get; set; }

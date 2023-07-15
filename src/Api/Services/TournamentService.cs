@@ -9,9 +9,9 @@ namespace ApiIsolated.Services;
 
 public class TournamentService : BaseService<TournamentDataModel>,ITournamentService
 {
-    public TournamentService(IOptions<FlyballGameDaySettings> flyballStoreDatabaseSettings) : base(flyballStoreDatabaseSettings)
+    public TournamentService(IOptions<FlyballGameDaySettings> flyballStoreDatabaseSettings) : base(flyballStoreDatabaseSettings,nameof(Tournament))
     {
-        base.DatabaseName = nameof(Tournament);
+       
     }
     
     public async Task<IEnumerable<Tournament>> GetAllActive()
