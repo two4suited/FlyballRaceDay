@@ -4,7 +4,7 @@ resource "azurerm_cosmosdb_account" "cosmosdb" {
   resource_group_name = var.ResourceGroupName
 
   offer_type = "Standard"
-  kind       = "GlobalDocumentDB"
+  kind       = "MongoDB"
   tags = var.module_tags
   consistency_policy {
     consistency_level = "Session"
@@ -12,6 +12,17 @@ resource "azurerm_cosmosdb_account" "cosmosdb" {
 
   capabilities {
     name = "EnableServerless"
+  }
+  capabilities {
+    name = "mongoEnableDocLevelTTL"
+  }
+
+  capabilities {
+    name = "MongoDBv3.4"
+  }
+
+  capabilities {
+    name = "EnableMongo"
   }
   geo_location {
     location = var.location
