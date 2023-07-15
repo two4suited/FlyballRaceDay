@@ -241,7 +241,7 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/Error'
-  /ring/{tournamentid}/{ringid}:
+  /ring/{tournamentId}/{ringId}:
     put:
       summary: Ring - Update Ring 
       operationId: updateRing
@@ -252,7 +252,7 @@ paths:
           required: true
           schema:
             type: string
-        - name: ring
+        - name: ringId
           in: path
           required: true
           schema:
@@ -272,7 +272,7 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/Error'   
-  /ring/{tournamentid}:
+  /ring/{tournamentId}:
     get:
       summary: Ring - Get Ring By Tournament
       operationId: getRings
