@@ -1,6 +1,6 @@
 namespace BlazorApp.Shared
 {
-    public class Race
+    public class Race : IRace
     {
         public string RaceNumber { get; set; }
         public string LeftLaneTeam { get; set; }
