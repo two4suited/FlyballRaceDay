@@ -10,7 +10,7 @@ servers:
 paths:
   /tournament:
    get:
-    summary: Tournament - Get All
+    summary: Tournament - Get All Active
     operationId: getalltournaments
     tags:
       - "Tournament"
@@ -126,13 +126,13 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/Error'
-  /schedule/{id}:
+  /schedule/{tournamentid}:
       get:
-        summary: Schedule - Get By Id
+        summary: Schedule - Get By Tournament Id
         operationId: getschedulebyid
         tags: ["Schedule"]
         parameters:
-          - name: id
+          - name: tournamentid
             in: path
             required: true  
             schema:
@@ -163,6 +163,69 @@ paths:
             content:
               application/json:
                 schema:
+                  $ref: '#/components/schemas/Race'
+          '500':
+            description: Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+  /races/done/{tournamentid}/{racenumber}:
+    put: 
+      summary: Races - Mark Race as Done
+      operationId: racemarkasdone
+      tags: ["Races"]
+      parameters:
+          - name: tournamentid
+            in: path
+            required: true  
+            schema:
+              type: string 
+          - name: racenumber
+            in: path
+            required: true  
+            schema:
+              type: string     
+      responses:
+          '200':
+            description: Get Upcoming Races
+            content:
+              application/json:
+                schema:
+                    $ref: '#/components/schemas/Race'
+          '500':
+            description: Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'
+  /races/{tournamentid}/{racenumber}/{ringid}:
+    put: 
+      summary: Races - Put in Lane
+      operationId: raceupnext
+      tags: ["Races"]
+      parameters:
+          - name: tournamentid
+            in: path
+            required: true  
+            schema:
+              type: string 
+          - name: racenumber
+            in: path
+            required: true  
+            schema:
+              type: string 
+          - name: ringid
+            in: path
+            required: true
+            schema:
+              type: string  
+      responses:
+          '200':
+            description: Race Added to Up Next
+            content:
+              application/json:
+                schema:
                   type: array
                   items:
                     $ref: '#/components/schemas/Race'
@@ -171,9 +234,7 @@ paths:
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/Error'
- 
-        
+                  $ref: '#/components/schemas/Error'        
 
 components:
   schemas:
@@ -247,6 +308,9 @@ components:
     Ring:
       type: object
       properties:
+        Id:
+          type: string
+          example: 1
         Name:
           type: string
           example: "Green Ring"
