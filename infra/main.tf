@@ -25,6 +25,7 @@ resource "azurerm_static_site" "staticwebapp" {
   resource_group_name = azurerm_resource_group.resourcegroup.name
   location            = var.location
   sku_tier = "Standard"
+  sku_size = "Standard"
 }
 
 module "api_management" {  
