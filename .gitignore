@@ -6,8 +6,9 @@
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
 .terraform/
-
 .terraform.lock.hcl
+*.idea/
+*obj/
 
 # User-specific files
 *.rsuser
