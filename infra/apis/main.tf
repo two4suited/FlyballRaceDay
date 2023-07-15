@@ -1,5 +1,5 @@
 module "saif-apimanagement-apis" {
-  source            = "../../apim-apis"
+  source            = "../apim-apis"
   APIName           = "api"
   OpenAPISpecFile   = file("${path.root}/apis/FlyballRaceDay.yml")
   Path              = "api"
