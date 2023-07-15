@@ -64,6 +64,27 @@ locals {
       mockingResponseCode = "200"
       backendService      = ""
       backendRewrite      = ""    
+    },
+    {
+      operationid         = "updateRing"
+      mocking             = true
+      mockingResponseCode = "200"
+      backendService      = ""
+      backendRewrite      = ""    
+    },
+    {
+      operationid         = "getRings"
+      mocking             = true
+      mockingResponseCode = "200"
+      backendService      = ""
+      backendRewrite      = ""    
+    },
+    {
+      operationid         = "addRing"
+      mocking             = true
+      mockingResponseCode = "200"
+      backendService      = ""
+      backendRewrite      = ""    
     }
     ]
   }
