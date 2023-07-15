@@ -152,11 +152,17 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/Error'
-  /races:
+  /races/{tournamentId}:
     get:
       summary: Races - Upcoming
       operationId: getraces
-      tags: ["Races"]      
+      tags: ["Races"]
+      parameters:
+       - name: tournamentid
+         in: path
+         required: true
+         schema:
+            type: string      
       responses:
           '200':
             description: Get Upcoming Races
@@ -201,7 +207,7 @@ paths:
                   $ref: '#/components/schemas/Error'
   /races/{tournamentid}/{racenumber}/{ringid}:
     put: 
-      summary: Races - Put in Lane
+      summary: Races - Add To Ring
       operationId: raceupnext
       tags: ["Races"]
       parameters:
@@ -234,7 +240,90 @@ paths:
             content:
               application/json:
                 schema:
+                  $ref: '#/components/schemas/Error'
+  /ring/{tournamentid}/{ringid}:
+    put:
+      summary: Ring - Update Ring 
+      operationId: updateRing
+      tags: ["Ring"]
+      parameters:
+        - name: tournamentId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ring
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+          '200':
+            description: Got Rings
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Ring'
+          '500':
+            description: Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'   
+  /ring/{tournamentid}:
+    get:
+      summary: Ring - Get Ring By Tournament
+      operationId: getRings
+      tags: ["Ring"]
+      parameters:
+        - name: tournamentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+          '200':
+            description: Got Rings
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Ring'
+          '500':
+            description: Error
+            content:
+              application/json:
+                schema:
                   $ref: '#/components/schemas/Error'        
+    post:
+      summary: Ring - Add Ring
+      operationId: addRing
+      tags: ["Ring"]
+      parameters:
+        - name: tournamentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+          '200':
+            description: Ring Added
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Ring'
+          '500':
+            description: Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Error'      
+
 
 components:
   schemas:
@@ -246,13 +335,7 @@ components:
           example: "1"
         EventName:
           type: string
-          example: "Tourney 1"
-        ScheduleId:
-          type: string
-          example: "1"        
-        RaceScreenID:
-          type: string
-          example: "1"
+          example: "Tourney 1" 
         StartDate:
           type: string
           example: 1/1/2010
@@ -274,7 +357,7 @@ components:
     Race:
       type: object
       properties:
-        ScheduleId:
+        RaceNumber:
           type: string
           example: "1"
         LeftTeam:
@@ -299,6 +382,9 @@ components:
           type: string
           description: Break Time in Minutes
           example: "5"
+        RingId:
+          type: string
+          example: "1"
     Message:
       type: object
       properties:
@@ -309,6 +395,9 @@ components:
       type: object
       properties:
         Id:
+          type: string
+          example: 1
+        TournamentId:
           type: string
           example: 1
         Name:
