@@ -15,27 +15,5 @@ public class TournamentDataModel : ITournament
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public int NumberOfLanes { get; set; }
-
-    public static Tournament ToTournament(TournamentDataModel model)
-    {
-        return new Tournament()
-        {
-            Id = model.Id,
-            EventName = model.EventName,
-            StartDate = model.StartDate,
-            EndDate = model.EndDate,
-            NumberOfLanes = model.NumberOfLanes
-        };
-    }
-
-    public static IEnumerable<Tournament> ToTournamentList(List<TournamentDataModel> models)
-    {
-        var tournaments = new List<Tournament>();
-        foreach (var model in models)
-        {
-            tournaments.Add(TournamentDataModel.ToTournament(model));
-        }
-
-        return tournaments;
-    }
+  
 }

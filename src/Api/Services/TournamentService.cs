@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ApiIsolated.Helpers;
 using ApiIsolated.Models;
 using BlazorApp.Shared;
 using Microsoft.Extensions.Options;
@@ -20,7 +21,8 @@ public class TournamentService : BaseService<TournamentDataModel>,ITournamentSer
     {
         var filter = Builders<TournamentDataModel>.Filter.Where(x => x.StartDate > _dateTimeService.CurrentDay);
         var documents =  await Collection.FindAsync(filter);
-        return TournamentDataModel.ToTournamentList(documents.ToList());
+        var tournaments = documents.ToList();
+        return tournaments.MapList(Mapper.Map<TournamentDataModel, Tournament>);
     }
 
     public async Task Create(TournamentDataModel tournament) =>

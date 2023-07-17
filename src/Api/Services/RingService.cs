@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ApiIsolated.Helpers;
 using ApiIsolated.Models;
 using BlazorApp.Shared;
 using Microsoft.Extensions.Options;
@@ -26,7 +27,8 @@ public class RingService : BaseService<RingDataModel>,IRingService
     {
         var filter = Builders<RingDataModel>.Filter.Where(x => x.TournamentId == tournamentId);
         var documents =  await Collection.FindAsync(filter);
-        return RingDataModel.ToRingList(documents.ToList());
+        var races = documents.ToList();
+        return races.MapList(Mapper.Map<RingDataModel,Ring>);
     }
 
     public async Task Delete(string ringId)
