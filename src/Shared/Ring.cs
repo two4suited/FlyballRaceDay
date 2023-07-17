@@ -2,9 +2,9 @@ using System;
 
 namespace BlazorApp.Shared
 {
-    public class Ring
+    public class Ring : IRing
     {
-        public string Id => Guid.NewGuid().ToString();
+        public string Id { get; set; } 
         public string Name { get; set; }
         public string Color { get; set; }
     }

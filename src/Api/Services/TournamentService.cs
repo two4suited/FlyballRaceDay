@@ -9,14 +9,18 @@ namespace ApiIsolated.Services;
 
 public class TournamentService : BaseService<TournamentDataModel>,ITournamentService
 {
-    public TournamentService(IOptions<FlyballGameDaySettings> flyballStoreDatabaseSettings) : base(flyballStoreDatabaseSettings,nameof(Tournament))
+    private readonly IDateTimeService _dateTimeService;
+
+    public TournamentService(IOptions<FlyballGameDaySettings> flyballStoreDatabaseSettings,IDateTimeService dateTimeService) : base(flyballStoreDatabaseSettings,nameof(Tournament))
     {
-       
+        _dateTimeService = dateTimeService;
     }
     
     public async Task<IEnumerable<Tournament>> GetAllActive()
     {
-        throw new System.NotImplementedException();
+        var filter = Builders<TournamentDataModel>.Filter.Where(x => x.StartDate > _dateTimeService.CurrentDay);
+        var documents =  await Collection.FindAsync(filter);
+        return TournamentDataModel.ToTournamentList(documents.ToList());
     }
 
     public async Task Create(TournamentDataModel tournament) =>
@@ -31,6 +35,7 @@ public class TournamentService : BaseService<TournamentDataModel>,ITournamentSer
 
     public async Task Delete(string tournamentId)
     {
-        throw new System.NotImplementedException();
+        var filter = Builders<TournamentDataModel>.Filter.Where(x => x.Id == tournamentId);
+        await Collection.DeleteOneAsync(filter);
     }
 }
