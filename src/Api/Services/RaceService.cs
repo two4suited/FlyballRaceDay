@@ -29,7 +29,7 @@ public class RaceService : BaseService<RaceDataModel>, IRaceService
     public async Task AddRaceToRing(string tournamentId, string raceNumber, string ringId)
     {
         var filter = Builders<RaceDataModel>.Filter.Where(x => x.TournamentId == tournamentId && x.RaceNumber == raceNumber);
-        var update = Builders<RaceDataModel>.Update.Set(nameof(RaceDataModel.RingId), ringId);
+        var update = Builders<RaceDataModel>.Update.Set(x => x.RingId, ringId);
         await Collection.UpdateOneAsync(filter, update);
     }
 
