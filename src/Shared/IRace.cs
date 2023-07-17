@@ -2,6 +2,8 @@ namespace BlazorApp.Shared
 {
     public interface IRace
     {
+        string Id { get; set; }
+        string TournamentId { get; set; }
         string RaceNumber { get; set; }
         string LeftLaneTeam { get; set; }
         string RightLaneTeam { get; set; }
@@ -9,6 +11,7 @@ namespace BlazorApp.Shared
         string Division { get; set; }
         string Breakout { get; set; }
         string RingId { get; set; }
+        bool Done { get; set; }
         bool IsBreak { get; set; }
         int BreakTimeInMinutes { get; set; }
     }
