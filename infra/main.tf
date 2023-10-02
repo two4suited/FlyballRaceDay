@@ -20,13 +20,6 @@ resource "azurerm_resource_group" "resourcegroup" {
     tags = local.common_tags  
 }
 
-resource "azurerm_static_site" "staticwebapp" {
-  name                = "${var.application_name}-${var.environment}"
-  resource_group_name = azurerm_resource_group.resourcegroup.name
-  location            = var.location
-  sku_tier = "Standard"
-  sku_size = "Standard"
-}
 
 module "api_management" {  
   source            = "./apim"
