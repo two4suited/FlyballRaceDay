@@ -1,0 +1,24 @@
+name: $(Date:yyyy).$(Date:MMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+    - main    
+  paths:
+    include:
+    - src/Functions/TournamentAPI*
+    - src/Functions/FunctionHelper*
+    - src/Functions/DataBaseServices*
+
+pool:
+  vmimage: "ubuntu-latest"
+
+variables: 
+  - template: vars.yml
+
+stages:  
+- template: templates/azurefunction-builddeploy.yml
+  parameters:
+    AppName: $(AppName)
+    ApiName: NafaTournamentHeatApi  
+    SourceDirectory: $(FunctionSourceDirectory)

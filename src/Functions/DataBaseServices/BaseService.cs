@@ -1,10 +1,8 @@
 using System;
-using ApiIsolated.Models;
-using BlazorApp.Shared;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace ApiIsolated.Services;
+namespace DataBaseServices;
 
 public abstract class BaseService<T> where T: class
 {

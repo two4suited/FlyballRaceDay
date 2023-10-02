@@ -4,6 +4,9 @@ trigger:
   branches:
     include:
     - main    
+  paths:
+    include:
+    - infra/*
 
 pool:
   vmimage: "ubuntu-latest"
@@ -11,21 +14,16 @@ pool:
 
 
 variables: 
+  - group: TerraformCloud
   # url: https://tfs.saif.com/SAIFCodeCollection/Framework%20Product/_git/Framework.CoreServices.LoggingApi?path=%2FPipelines%2Fbuild-vars.yml
   - template: vars.yml
 
 stages:  
 - stage: infrastructure
   jobs:
-  - template: templates/terraform-cloud-cli.yml
+  - template: templates/deploy-terraform-cli.yml
     parameters:
       TerraformDirectory: $(TerraformDirectory)
       ApplicationName: $(AppName)
       TerraformCommandOptions: $(TerraformCommandOptions)
       environment: $(environment)
-- template: templates/staticwebapp.yml
-  parameters:
-    AppLocation: $(AppLocation)
-    ApiLocation: $(ApiLocation)  
-    ConfigFileLocation: $(ConfigFileLocation)
-    outputlocation: $(OutputLocation)

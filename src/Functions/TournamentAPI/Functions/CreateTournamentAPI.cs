@@ -1,15 +1,15 @@
-namespace TournamentAPI;
+namespace TournamentAPI.Functions;
 
 public class CreateTournamentApi : BaseService<TournamentDataModel>
 {
     private readonly ILogger<CreateTournamentApi> _logger;
-    protected CreateTournamentApi(ILoggerFactory loggerFactory,IOptions<FlyballGameDaySettings> flyballStoreDatabaseSettings) : base(flyballStoreDatabaseSettings,nameof(Tournament))
+    public CreateTournamentApi(ILoggerFactory loggerFactory,IOptions<FlyballGameDaySettings> flyballStoreDatabaseSettings) : base(flyballStoreDatabaseSettings,nameof(Tournament))
     {
         _logger = loggerFactory.CreateLogger<CreateTournamentApi>();
     }
     
     [Function("Create")]
-    public async Task<HttpResponseData> CreateTournament([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData request)
+    public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData request)
     {
         if (request.Body.Length == 0)
         {

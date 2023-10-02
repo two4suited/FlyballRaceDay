@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using BlazorApp.Shared;
-using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace ApiIsolated.Models;
+namespace TournamentAPI;
 
 public class TournamentDataModel : ITournament
 {

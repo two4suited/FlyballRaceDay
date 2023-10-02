@@ -1,6 +1,6 @@
 using System;
 
-namespace ApiIsolated.Services;
+namespace FunctionHelper;
 
 public class DateTimeService : IDateTimeService
 {

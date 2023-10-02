@@ -1,4 +1,4 @@
-namespace ApiIsolated;
+namespace DataBaseServices;
 
 public class FlyballGameDaySettings
 {
