@@ -6,10 +6,10 @@ trigger:
     - main    
   paths:
     include:
-    - src/Functions/TournamentAPI*
-    - src/Functions/FunctionHelper*
- 
- pool:
+    - src/Functions/RingApi*
+    - src/Functions/FunctionHelper*    
+
+pool:
   vmimage: "ubuntu-latest"
 
 variables: 
@@ -19,5 +19,5 @@ stages:
 - template: templates/azurefunction-builddeploy.yml
   parameters:
     AppName: $(AppName)
-    ApiName: TournamentAPI  
+    ApiName: RingApi  
     SourceDirectory: $(FunctionSourceDirectory)
