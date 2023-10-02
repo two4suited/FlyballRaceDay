@@ -17,7 +17,7 @@ resource "azurerm_service_plan" "function_serviceplan" {
 
 variable "APIs" {
   type    = set(string)
-  default = ["TournamentAPI"]
+  default = ["TournamentAPI","RaceAPI","RingAPI"]
 }
 
 module "FunctionAPI" {
