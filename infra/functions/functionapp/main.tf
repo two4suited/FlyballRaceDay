@@ -1,11 +1,11 @@
-#data "azurerm_linux_function_app" "existing" {
-#  name                = var.FunctionAppName
-#  resource_group_name = var.ResourceGroupName
-#}
+data "azurerm_linux_function_app" "existing" {
+  name                = var.FunctionAppName
+  resource_group_name = var.ResourceGroupName
+}
 
-#locals {
-#  existing_app_settings = coalesce(data.azurerm_linux_function_app.existing.app_settings, {})
-#}
+locals {
+  existing_app_settings = coalesce(data.azurerm_linux_function_app.existing.app_settings, {})
+}
 
 resource "azurerm_linux_function_app" "FunctionApp" {
   name                          = var.FunctionAppName
@@ -39,8 +39,8 @@ resource "azurerm_linux_function_app" "FunctionApp" {
   app_settings= {    
    "FlyballGameDaySettings__ConnectionString" = var.CosmosDatabaseConnectionString
    "FlyballGameDaySettings__DatabaseName" = var.CosmosDatabaseContainer  
-   # "WEBSITE_MOUNT_ENABLED"    = lookup(local.existing_app_settings, "WEBSITE_MOUNT_ENABLED", null)
-   # "WEBSITE_RUN_FROM_PACKAGE" = lookup(local.existing_app_settings, "WEBSITE_RUN_FROM_PACKAGE", null)
+    "WEBSITE_MOUNT_ENABLED"    = lookup(local.existing_app_settings, "WEBSITE_MOUNT_ENABLED", null)
+    "WEBSITE_RUN_FROM_PACKAGE" = lookup(local.existing_app_settings, "WEBSITE_RUN_FROM_PACKAGE", null)
   }   
 }
 
