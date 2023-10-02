@@ -1,6 +1,6 @@
 namespace TournamentAPI;
 
-public class TournamentApiFunctions : APIBaseClass<TournamentApiFunctions,TournamentDataModel,Tournament>
+public class TournamentApiFunctions : ApiBaseClass<TournamentApiFunctions,TournamentDataModel,Tournament>
 {
     private readonly IDateTimeService _dateTimeService;
 

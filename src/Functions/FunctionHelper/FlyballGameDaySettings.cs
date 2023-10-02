@@ -1,4 +1,4 @@
-namespace DataBaseServices;
+namespace FunctionHelper;
 
 public class FlyballGameDaySettings
 {

@@ -1,11 +1,10 @@
-namespace RingAPI
-{
-    public class Ring 
-    {
-        public string Id { get; set; }
-        public string TournamentId { get; set; }
+namespace RingAPI;
 
-        public string Name { get; set; }
-        public string Color { get; set; }
-    }
+public class Ring 
+{
+    public string Id { get; set; }
+    public string TournamentId { get; set; }
+
+    public string Name { get; set; }
+    public string Color { get; set; }
 }

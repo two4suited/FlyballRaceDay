@@ -1,6 +1,6 @@
 namespace RingAPI;
 
-public class RingApiFunctions : APIBaseClass<RingApiFunctions,RingDataModel,Ring>
+public class RingApiFunctions : ApiBaseClass<RingApiFunctions,RingDataModel,Ring>
 {
     public RingApiFunctions(ILoggerFactory loggerFactory,IOptions<FlyballGameDaySettings> flyballStoreDatabaseSettings) : base(loggerFactory,flyballStoreDatabaseSettings,nameof(Ring))
     {

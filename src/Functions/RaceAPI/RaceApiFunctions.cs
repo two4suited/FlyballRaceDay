@@ -1,6 +1,6 @@
 namespace RaceAPI;
 
-public class RaceApiFunctions : APIBaseClass<RaceApiFunctions,RaceDataModel,Race>
+public class RaceApiFunctions : ApiBaseClass<RaceApiFunctions,RaceDataModel,Race>
 {
     public RaceApiFunctions(ILoggerFactory loggerFactory,IOptions<FlyballGameDaySettings> flyballStoreDatabaseSettings) : base(loggerFactory,flyballStoreDatabaseSettings,nameof(Race))
     {
