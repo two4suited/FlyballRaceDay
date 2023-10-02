@@ -1,6 +1,6 @@
 namespace RingAPI
 {
-    public class Ring : IRing
+    public class Ring 
     {
         public string Id { get; set; }
         public string TournamentId { get; set; }

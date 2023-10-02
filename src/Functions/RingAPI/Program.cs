@@ -1,25 +1,12 @@
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Template;
-
 var host = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults()
-      .ConfigureServices((hostcontext, services) =>
+    .ConfigureServices(s =>
     {
-        if (hostcontext.HostingEnvironment.IsDevelopment())
+        s.AddSingleton<IDateTimeService, DateTimeService>();
+        s.AddOptions<FlyballGameDaySettings>().Configure<IConfiguration>((settings, configuration) =>
         {
-            services.AddInMemoryCosmosRepository();
-        }
-        else
-        {
-            services.AddCosmosRepository(options =>
-            {
-                options.ContainerPerItemType = true;
-                options.ContainerBuilder.Configure<TemplateModel>(containerOptions => containerOptions   
-                    .WithServerlessThroughput()                                
-                );
-            });
-        }
+            configuration.GetSection(nameof(FlyballGameDaySettings)).Bind(settings);
+        });
     })
     .Build();
 
