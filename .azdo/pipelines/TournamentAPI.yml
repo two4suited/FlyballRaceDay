@@ -20,5 +20,5 @@ stages:
 - template: templates/azurefunction-builddeploy.yml
   parameters:
     AppName: $(AppName)
-    ApiName: NafaTournamentHeatApi  
+    ApiName: TournamentAPI  
     SourceDirectory: $(FunctionSourceDirectory)

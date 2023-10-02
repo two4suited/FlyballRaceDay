@@ -11,11 +11,5 @@ variables:
   value: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
 - name: TerraformCommandOptions
   value: -var "application_name=$(appName)" -var "location=$(AzureLocation)" -var "environment=$(environment)"
-- name: ApiLocation
-  value: /src/api
-- name: AppLocation
-  value: src/Client
-- name: ConfigFileLocation
-  value: src/Client
-- name: OutputLocation
-  value: wwwroot
+- name: FunctionSourceDirectory
+  value: src/Functions
