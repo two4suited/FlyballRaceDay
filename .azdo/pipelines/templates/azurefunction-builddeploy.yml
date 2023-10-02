@@ -24,7 +24,7 @@ stages:
     - task: AzureFunctionApp@1
       displayName: Deploy ${{parameters.ApiName}} Function App
       inputs:
-        azureSubscription: 'Pay-As-You-Go(3bd10068-0c35-4ed1-8436-1b052ac96a2b)'
+        azureSubscription: 'azconnection'
         appType: 'functionAppLinux'
         appName: '${{parameters.AppName}}-${{parameters.ApiName}}'
         package: '$(Build.ArtifactStagingDirectory)/${{parameters.ApiName}}.zip'
