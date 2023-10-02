@@ -1,33 +1,33 @@
 locals {
-  backEndService = "${var.ApplicationName}-ClubApi"
+  tournamentBackendService = "${var.ApplicationName}-TournamentApi"
 
   api_policies = [
      {
       operationid         = "getalltournaments"
-      mocking             = true
+      mocking             = false
       mockingResponseCode = "200"
-      backendService      = ""
-      backendRewrite      = ""    
+      backendService      = local.tournamentBackendService
+      backendRewrite      = "GetAll"    
     },
     {
       operationid         = "createTournament"
-      mocking             = true
+      mocking             = false
       mockingResponseCode = "200"
-      backendService      = ""
+      backendService      = local.tournamentBackendService
       backendRewrite      = ""    
     },
     {
       operationid         = "updateTournament"
-      mocking             = true
+      mocking             = false
       mockingResponseCode = "200"
-      backendService      = ""
+      backendService      = local.tournamentBackendService
       backendRewrite      = ""    
     },
     {
       operationid         = "deleteTournament"
       mocking             = true
       mockingResponseCode = "200"
-      backendService      = ""
+      backendService      = local.tournamentBackendService
       backendRewrite      = ""    
     },
     {
