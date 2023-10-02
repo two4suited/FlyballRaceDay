@@ -1,9 +1,9 @@
 namespace TournamentAPI.Functions;
 
-public class CreateTournamentApi : BaseService<TournamentDataModel>
+public class CreateTournamentApi : APIBaseClass<CreateTournamentApi,TournamentDataModel,Tournament>
 {
     private readonly ILogger<CreateTournamentApi> _logger;
-    public CreateTournamentApi(ILoggerFactory loggerFactory,IOptions<FlyballGameDaySettings> flyballStoreDatabaseSettings) : base(flyballStoreDatabaseSettings,nameof(Tournament))
+    public CreateTournamentApi(ILoggerFactory loggerFactory,IOptions<FlyballGameDaySettings> flyballStoreDatabaseSettings) : base(loggerFactory,flyballStoreDatabaseSettings,nameof(Tournament))
     {
         _logger = loggerFactory.CreateLogger<CreateTournamentApi>();
     }
@@ -11,34 +11,6 @@ public class CreateTournamentApi : BaseService<TournamentDataModel>
     [Function("Create")]
     public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData request)
     {
-        if (request.Body.Length == 0)
-        {
-            var response = request.CreateResponse(HttpStatusCode.BadRequest);
-            _logger.LogInformation("The Body of the request was empty");
-            return response;
-        }
-            
-        using var cancellationSource = CancellationTokenSource.CreateLinkedTokenSource(request.FunctionContext.CancellationToken);
-
-        var requestBody = await new StreamReader(request.Body).ReadToEndAsync(cancellationSource.Token);
-        var newItem = JsonSerializer.Deserialize<TournamentDataModel>(requestBody);
-
-        _logger.LogInformation("New Item: {@NewItem}", newItem);
-            
-        try
-        {
-            await Collection.InsertOneAsync(newItem, cancellationToken: cancellationSource.Token);
-
-            var response = request.CreateResponse(HttpStatusCode.OK);
-            await response.WriteAsJsonAsync(newItem, cancellationToken: cancellationSource.Token);
-
-            return response;
-        }
-        catch (Exception ex)
-        {
-            var response = request.CreateResponse(HttpStatusCode.InternalServerError);
-            await response.WriteStringAsync(ex.Message, cancellationSource.Token);
-            return response;
-        }
+        return await Create(request);
     }
 }

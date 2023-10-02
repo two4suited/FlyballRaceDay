@@ -3,12 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3D98E335-CE37-4FF3-9152-D69BD08810AD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB.IntegrationTests", "DB.IntegrationTests\DB.IntegrationTests.csproj", "{B8723B51-5681-4C5F-B592-D26DB825B19E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyballRaceDay.UnitTests", "FlyballRaceDay.UnitTests\FlyballRaceDay.UnitTests.csproj", "{C3B7BFA0-2748-41F9-A88F-4505D5267487}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functions", "Functions", "{FB8949DD-EDEF-49F6-AF89-FE3C43859113}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaceAPI", "Functions\RaceAPI\RaceAPI.csproj", "{2AC161C3-DD06-4CD3-9030-2707BA12C051}"
@@ -17,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RingAPI", "Functions\RingAP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TournamentAPI", "Functions\TournamentAPI\TournamentAPI.csproj", "{B7128E30-D20F-4FC5-B604-FCEA63559E16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseServices", "Functions\DataBaseServices\DataBaseServices.csproj", "{9336216E-2B74-4732-94D2-16213CAF1838}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionHelper", "Functions\FunctionHelper\FunctionHelper.csproj", "{DC829EB2-DE50-419A-8814-6F3EAF835A03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B8723B51-5681-4C5F-B592-D26DB825B19E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B8723B51-5681-4C5F-B592-D26DB825B19E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B8723B51-5681-4C5F-B592-D26DB825B19E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B8723B51-5681-4C5F-B592-D26DB825B19E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3B7BFA0-2748-41F9-A88F-4505D5267487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3B7BFA0-2748-41F9-A88F-4505D5267487}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3B7BFA0-2748-41F9-A88F-4505D5267487}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3B7BFA0-2748-41F9-A88F-4505D5267487}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2AC161C3-DD06-4CD3-9030-2707BA12C051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2AC161C3-DD06-4CD3-9030-2707BA12C051}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AC161C3-DD06-4CD3-9030-2707BA12C051}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,21 +31,19 @@ Global
 		{B7128E30-D20F-4FC5-B604-FCEA63559E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7128E30-D20F-4FC5-B604-FCEA63559E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7128E30-D20F-4FC5-B604-FCEA63559E16}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9336216E-2B74-4732-94D2-16213CAF1838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9336216E-2B74-4732-94D2-16213CAF1838}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9336216E-2B74-4732-94D2-16213CAF1838}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9336216E-2B74-4732-94D2-16213CAF1838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC829EB2-DE50-419A-8814-6F3EAF835A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC829EB2-DE50-419A-8814-6F3EAF835A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC829EB2-DE50-419A-8814-6F3EAF835A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC829EB2-DE50-419A-8814-6F3EAF835A03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B8723B51-5681-4C5F-B592-D26DB825B19E} = {3D98E335-CE37-4FF3-9152-D69BD08810AD}
-		{C3B7BFA0-2748-41F9-A88F-4505D5267487} = {3D98E335-CE37-4FF3-9152-D69BD08810AD}
 		{2AC161C3-DD06-4CD3-9030-2707BA12C051} = {FB8949DD-EDEF-49F6-AF89-FE3C43859113}
 		{FE4708D3-A41F-45CC-AC60-62004C2DDF16} = {FB8949DD-EDEF-49F6-AF89-FE3C43859113}
 		{B7128E30-D20F-4FC5-B604-FCEA63559E16} = {FB8949DD-EDEF-49F6-AF89-FE3C43859113}
-		{9336216E-2B74-4732-94D2-16213CAF1838} = {FB8949DD-EDEF-49F6-AF89-FE3C43859113}
+		{DC829EB2-DE50-419A-8814-6F3EAF835A03} = {FB8949DD-EDEF-49F6-AF89-FE3C43859113}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAEC77B5-1FF5-4E89-86CD-620314C521C4}

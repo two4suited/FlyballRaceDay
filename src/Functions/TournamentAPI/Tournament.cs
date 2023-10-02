@@ -2,7 +2,7 @@ using System;
 
 namespace TournamentAPI
 {
-    public class Tournament : ITournament
+    public class Tournament 
     {
         public string Id { get; set; }
         public string EventName { get; set; }

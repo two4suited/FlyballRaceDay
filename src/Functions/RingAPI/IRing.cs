@@ -1,4 +1,4 @@
-namespace BlazorApp.Shared
+namespace RingAPI
 {
     public interface IRing
     {

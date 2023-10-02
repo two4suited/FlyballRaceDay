@@ -1,9 +1,9 @@
 POST http://localhost:7071/api/Create
 
 {
-  "EventName": "Christmas Time",
-  "StartDate": "2023-12-23T00:00:00Z",
-  "EndDate": "2023-12-23T00:00:00Z",
+  "EventName": "Turkey Time",
+  "StartDate": "2023-11-23T00:00:00Z",
+  "EndDate": "2023-11-23T00:00:00Z",
   "NumberOfLanes" : 2
 }
 
@@ -11,16 +11,16 @@ POST http://localhost:7071/api/Create
 GET http://localhost:7071/api/GetAll
 
 ### Put
-PUT http://localhost:7071/api/5181d301-eab7-4c3a-a99c-398e3b2c1447
+PUT http://localhost:7071/api/4d929820-110c-48d8-9d86-53719cc209bb
 
 {
-  "EventName": "Christmas Time Tournament",
-  "StartDate": "2023-12-23T00:00:00Z",
-  "EndDate": "2023-12-23T00:00:00Z",
+"EventName": "Turkey Time",
+  "StartDate": "2023-11-23T00:00:00Z",
+  "EndDate": "2023-11-23T00:00:00Z",
   "NumberOfLanes" : 4
 }
 
 ### Delete 
-DELETE http://localhost:7071/api/5181d301-eab7-4c3a-a99c-398e3b2c1447
+DELETE http://localhost:7071/api/c49766c1-4b0d-4011-a23c-c4bfd4bc59c7
 
 

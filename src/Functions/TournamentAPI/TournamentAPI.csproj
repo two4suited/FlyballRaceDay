@@ -14,7 +14,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FunctionHelper\FunctionHelper.csproj" />
-    <ProjectReference Include="..\DataBaseServices\DataBaseServices.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

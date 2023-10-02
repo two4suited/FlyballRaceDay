@@ -9,5 +9,6 @@
     <PackageReference Include="IEvangelist.Azure.CosmosRepository" Version="7.0.1" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.14.1" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.0.13" />
+    <PackageReference Include="MongoDB.Driver" Version="2.20.0" />
   </ItemGroup>
 </Project>

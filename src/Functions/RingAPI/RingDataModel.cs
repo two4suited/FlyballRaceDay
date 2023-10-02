@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using ApiIsolated.Helpers;
-using BlazorApp.Shared;
-
-namespace ApiIsolated.Models;
+namespace RingAPI;
 
 public class RingDataModel : IRing
 {

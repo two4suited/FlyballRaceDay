@@ -1,6 +1,4 @@
-using System;
-
-namespace BlazorApp.Shared
+namespace RingAPI
 {
     public class Ring : IRing
     {
