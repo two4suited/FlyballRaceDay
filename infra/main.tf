@@ -22,14 +22,14 @@ resource "azurerm_resource_group" "resourcegroup" {
 module "StorageAccount" {
   depends_on = [ azurerm_resource_group.resourcegroup ]
   source = "./storageaccount"
-  ResourceGroupName = azurerm_resource_group.FlyballStats.name
+  ResourceGroupName = azurerm_resource_group.resourcegroup.name
   module_tags = local.common_tags
   application_name = var.application_name
   location = var.location
   environment = var.environment  
 }
 module "ApplicationInsights" {
-  depends_on = [ azurerm_resource_group.azurerm_resource_group.resourcegroup ]
+  depends_on = [ azurerm_resource_group.resourcegroup ]
   source = "./appinsights"
   application_name = var.application_name
   location = var.location
