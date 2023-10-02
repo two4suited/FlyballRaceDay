@@ -3,9 +3,9 @@ data "azurerm_linux_function_app" "existing" {
   resource_group_name = var.ResourceGroupName
 }
 
-locals {
-  existing_app_settings = coalesce(data.azurerm_linux_function_app.existing.app_settings, {})
-}
+#locals {
+#  existing_app_settings = coalesce(data.azurerm_linux_function_app.existing.app_settings, {})
+#}
 
 resource "azurerm_linux_function_app" "FunctionApp" {
   name                          = var.FunctionAppName

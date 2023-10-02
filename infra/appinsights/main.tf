@@ -1,5 +1,5 @@
 resource "azurerm_application_insights" "appinsights" {
-  name                = "flyballstats-${var.environment}-appinsights"
+  name                = "${application_name}-${var.environment}-appinsights"
   location            = var.location
   resource_group_name = var.ResourceGroupName
   application_type    = "web"
