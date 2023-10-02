@@ -9,7 +9,7 @@ trigger:
     - src/Functions/TournamentAPI*
     - src/Functions/FunctionHelper*
  
- pool:
+pool:
   vmimage: "ubuntu-latest"
 
 variables: 
