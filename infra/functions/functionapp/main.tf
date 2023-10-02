@@ -37,8 +37,8 @@ resource "azurerm_linux_function_app" "FunctionApp" {
   
   
   app_settings= {    
-   "RepositoryOptions__CosmosConnectionString" = var.CosmosDatabaseConnectionString
-   "RepositoryOptions__DatabaseId" = var.CosmosDatabaseContainer
+   "FlyballGameDaySettings__ConnectionString" = var.CosmosDatabaseConnectionString
+   "FlyballGameDaySettings__DatabaseName" = var.CosmosDatabaseContainer  
     "WEBSITE_MOUNT_ENABLED"    = lookup(local.existing_app_settings, "WEBSITE_MOUNT_ENABLED", null)
     "WEBSITE_RUN_FROM_PACKAGE" = lookup(local.existing_app_settings, "WEBSITE_RUN_FROM_PACKAGE", null)
   }   
