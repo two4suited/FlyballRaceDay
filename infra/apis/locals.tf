@@ -21,7 +21,7 @@ locals {
       mocking             = false
       mockingResponseCode = "200"
       backendService      = local.tournamentBackendService
-      backendRewrite      = ""    
+      backendRewrite      = "/{id}"    
     },
     {
       operationid         = "deleteTournament"
