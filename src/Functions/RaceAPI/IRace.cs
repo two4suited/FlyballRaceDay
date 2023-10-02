@@ -1,4 +1,4 @@
-namespace BlazorApp.Shared
+namespace RaceAPI
 {
     public interface IRace
     {

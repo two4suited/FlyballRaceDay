@@ -107,7 +107,7 @@ namespace FunctionHelper
         }
 
 
-        public async Task<HttpResponseData> Update(HttpRequestData request, string id)
+        public async Task<HttpResponseData> Update(HttpRequestData request, string id,FilterDefinition<TData> filter)
         {
             if (request.Body.Length == 0)
             {
@@ -123,7 +123,6 @@ namespace FunctionHelper
         
             try
             {
-                var filter = Builders<TData>.Filter.Where(x => x.Id == id);
                 var documents =  await Collection.FindAsync(filter, cancellationToken: cancellationSource.Token);
                 await Collection.ReplaceOneAsync(filter,itemToUpdate, cancellationToken: cancellationSource.Token);  
             

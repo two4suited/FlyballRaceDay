@@ -20,7 +20,8 @@ public class TournamentApiFunctions : APIBaseClass<TournamentApiFunctions,Tourna
     [Function("Update")]
     public async Task<HttpResponseData> UpdateTournaments([HttpTrigger(AuthorizationLevel.Function, "put",Route = "{id}")] HttpRequestData request,string id)
     {
-        return await Update(request, id);
+        var filter = Builders<TournamentDataModel>.Filter.Where(x => x.Id == id);
+        return await Update(request,id,filter);
     }
     [Function("Delete")]
     public async Task<HttpResponseData> DeleteTournaments([HttpTrigger(AuthorizationLevel.Function, "delete",Route = "{id}")] HttpRequestData request,string id)

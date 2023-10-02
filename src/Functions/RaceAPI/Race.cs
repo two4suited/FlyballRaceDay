@@ -1,6 +1,6 @@
-namespace BlazorApp.Shared
+namespace RaceAPI
 {
-    public class Race : IRace
+    public class Race 
     {
         public string Id { get; set; }
         public string TournamentId { get; set; }

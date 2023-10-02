@@ -26,6 +26,7 @@ public class RingApiFunctions : APIBaseClass<RingApiFunctions,RingDataModel,Ring
     [Function("Update")]
     public async Task<HttpResponseData> UpdateRing([HttpTrigger(AuthorizationLevel.Function, "put",Route = "{id}")] HttpRequestData request,string id)
     {
-        return await Update(request, id);
+        var filter = Builders<RingDataModel>.Filter.Where(x => x.TournamentId == id);
+        return await Update(request, id,filter);
     }
 }

@@ -1,16 +1,12 @@
-using System;
-using BlazorApp.Shared;
+namespace RaceAPI;
 
-namespace ApiIsolated.Models;
-
-public class RaceDataModel : IRace
+public class RaceDataModel : DataModel
 {
     public RaceDataModel()
     {
         Done = false;
     }
-
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+   
     public string TournamentId { get; set; }
     public string RaceNumber { get; set; }
     public string LeftLaneTeam { get; set; }
