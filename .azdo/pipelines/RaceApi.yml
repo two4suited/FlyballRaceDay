@@ -19,5 +19,5 @@ stages:
 - template: templates/azurefunction-builddeploy.yml
   parameters:
     AppName: $(AppName)
-    ApiName: RaceApi  
+    ApiName: RaceAPI  
     SourceDirectory: $(FunctionSourceDirectory)
