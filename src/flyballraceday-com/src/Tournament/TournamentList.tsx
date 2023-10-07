@@ -31,6 +31,7 @@ const TournamentList: React.FC = () => {
             <table>
                 <thead>
                     <tr>           
+                        <th>Region</th>
                         <th>Event Name</th>
                         <th>Start Date</th>
                         <th>End Date</th>
@@ -40,7 +41,8 @@ const TournamentList: React.FC = () => {
                 </thead>
                 <tbody>
                     {tournaments.map(t => (
-                        <tr key={t.Id}>                        
+                        <tr key={t.Id}>
+                            <td>{t.Region}</td>                        
                             <td>{t.EventName}</td>
                             <td>{new Date(t.StartDate).toLocaleDateString()}</td>
                             <td>{new Date(t.EndDate).toLocaleDateString()}</td>

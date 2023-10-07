@@ -338,13 +338,16 @@ components:
           example: "Tourney 1" 
         StartDate:
           type: string
-          example: 1/1/2010
+          example: "2023-11-23T00:00:00Z"
         EndDate: 
           type: string
-          example: 1/2/2010
-        Lanes: 
-          type: string
+          example: "2023-11-23T00:00:00Z"
+        NumberOfLanes: 
+          type: integer
           example: 2
+        Region:
+          type: string
+          example: Region 2
     Error:
       type: object
       properties:

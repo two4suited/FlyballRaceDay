@@ -4,4 +4,5 @@ export interface Tournament {
     StartDate: Date;
     EndDate: Date;
     NumberOfLanes: number;
+    Region: string;
 }

@@ -9,6 +9,7 @@ const TournamentForm: React.FC = () => {
         EventName: '',
         StartDate: new Date(),
         EndDate: new Date(),
+        Region: '',
         NumberOfLanes: 2
     });
 
@@ -32,6 +33,7 @@ const TournamentForm: React.FC = () => {
                 EventName: '',
                 StartDate: new Date(),
                 EndDate: new Date(),
+                Region: '',
                 NumberOfLanes: 0
             });
         } catch (error) {

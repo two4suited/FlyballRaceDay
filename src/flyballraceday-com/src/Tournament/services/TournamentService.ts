@@ -1,13 +1,13 @@
 import  { Tournament } from '../models/Tournament'
 
-const API_URL = 'http://localhost:7071/api/'; 
+const API_URL = 'http://localhost:4010/tournament'; 
 
 export const getTournaments = async (): Promise<Tournament[]> => {
-    const response = await fetch(API_URL + 'GetAll');
+    const response = await fetch(API_URL);
     return await response.json();
 }
 export const createTournament = async (tournament: Tournament): Promise<Tournament> => {
-    const response = await fetch(API_URL + 'Create', {
+    const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
