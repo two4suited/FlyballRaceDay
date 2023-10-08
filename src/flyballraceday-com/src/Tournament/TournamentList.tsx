@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Tournament } from './models/Tournament';
 import * as TournamentService from './services/TournamentService';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 const TournamentList: React.FC = () => {
     const [tournaments, setTournaments] = useState<Tournament[]>([]);
@@ -26,35 +27,31 @@ const TournamentList: React.FC = () => {
     };
 
     return (
-        <div>
-            <h1>Tournaments</h1>
-            <table>
-                <thead>
-                    <tr>           
-                        <th>Region</th>
-                        <th>Event Name</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Number of Lanes</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tournaments.map(t => (
-                        <tr key={t.Id}>
-                            <td>{t.Region}</td>                        
-                            <td>{t.EventName}</td>
-                            <td>{new Date(t.StartDate).toLocaleDateString()}</td>
-                            <td>{new Date(t.EndDate).toLocaleDateString()}</td>
-                            <td>{t.NumberOfLanes}</td>
-                            <td>
-                                <button onClick={() => handleDelete(t.Id)}>Delete</button>
-                            </td>
-                        </tr>
+
+        <TableContainer>
+            <Table sx={{ minwidth: 650 }} size="small" aria-label="Tournaments">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Region</TableCell>
+                        <TableCell align="right">Event Name</TableCell>
+                        <TableCell align="right">Start Date</TableCell>
+                        <TableCell align="right">End Date</TableCell>
+                        <TableCell align="right">Number of Lanes</TableCell>
+                    </TableRow>                    
+                </TableHead>
+                <TableBody>
+                {tournaments.map(t => (
+                        <TableRow key={t.Id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                            <TableCell component="th" scope="row">{t.Region}</TableCell>
+                            <TableCell align="right">{t.EventName}</TableCell>
+                            <TableCell align="right">{new Date(t.StartDate).toLocaleDateString()}</TableCell>
+                            <TableCell align="right">{new Date(t.EndDate).toLocaleDateString()}</TableCell>
+                            <TableCell align="right">{t.NumberOfLanes}</TableCell>
+                        </TableRow>
                     ))}
-                </tbody>
-            </table>
-        </div>
+                </TableBody>
+            </Table>
+        </TableContainer>  
     );
 }
 
