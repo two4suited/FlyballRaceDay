@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TournamentAPI", "Functions\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionHelper", "Functions\FunctionHelper\FunctionHelper.csproj", "{DC829EB2-DE50-419A-8814-6F3EAF835A03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functions.Tests", "..\tests\Functions.Tests\Functions.Tests.csproj", "{40ABB5BE-6679-44D5-93FC-BA6409DE2F4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functions.Tests.Integration", "..\tests\Functions.Tests.Integration\Functions.Tests.Integration.csproj", "{40ABB5BE-6679-44D5-93FC-BA6409DE2F4E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{01B9C095-DC9F-4E16-9C72-70DAF0D47711}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,7 @@ Global
 		{FE4708D3-A41F-45CC-AC60-62004C2DDF16} = {FB8949DD-EDEF-49F6-AF89-FE3C43859113}
 		{B7128E30-D20F-4FC5-B604-FCEA63559E16} = {FB8949DD-EDEF-49F6-AF89-FE3C43859113}
 		{DC829EB2-DE50-419A-8814-6F3EAF835A03} = {FB8949DD-EDEF-49F6-AF89-FE3C43859113}
+		{40ABB5BE-6679-44D5-93FC-BA6409DE2F4E} = {01B9C095-DC9F-4E16-9C72-70DAF0D47711}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAEC77B5-1FF5-4E89-86CD-620314C521C4}
