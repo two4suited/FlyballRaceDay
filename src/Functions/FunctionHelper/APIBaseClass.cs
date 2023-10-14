@@ -31,6 +31,7 @@ public abstract class ApiBaseClass<TClass,TData,TViewModel>: IApiBaseClass where
 
         var requestBody = await new StreamReader(request.Body).ReadToEndAsync(cancellationSource.Token);
         var newItem = JsonSerializer.Deserialize<TData>(requestBody);
+        newItem.Id = Guid.NewGuid().ToString();
 
         _logger.LogInformation("New Item: {@NewItem}", newItem);
             
