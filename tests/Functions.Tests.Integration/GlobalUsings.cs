@@ -1,2 +1,15 @@
+global using System.Net;
+global using System.Text;
+global using System.Text.Json;
+global using Azure.Core.Serialization;
+global using FunctionHelper;
+global using Microsoft.Azure.Functions.Worker;
+global using Microsoft.Azure.Functions.Worker.Http;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.Extensions.Options;
+global using NSubstitute;
+global using Shouldly;
 global using Testcontainers.MongoDb;
+global using TournamentAPI;
 global using Xunit;

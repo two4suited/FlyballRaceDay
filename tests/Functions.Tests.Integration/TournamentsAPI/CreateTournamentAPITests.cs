@@ -1,40 +1,19 @@
-using System.Net;
-using System.Text;
-using System.Text.Json;
-using Azure.Core.Serialization;
-using FunctionHelper;
-using Microsoft.Azure.Functions.Worker;
-using Microsoft.Azure.Functions.Worker.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-using NSubstitute;
-using Shouldly;
-using TournamentAPI;
-
 namespace Functions.Tests.TournamentsAPI;
 
-public sealed class CreateTournamentApiTests : IClassFixture<TournamentApiFactory>
+public sealed class CreateTournamentApiTests : IClassFixture<FunctionFactory>
 {
   
-    private TournamentApiFunctions _sut;
-    private HttpRequestData _request;
-
-    public CreateTournamentApiTests(TournamentApiFactory factory)
+    private FunctionFactory _factory;
+    private TournamentApiFunctions _fut;
+    public CreateTournamentApiTests(FunctionFactory factory)
     {
         factory.CreateFunction();
-
-        _request = factory.Request;
-        var serviceProvider = factory.Context.InstanceServices;
-        ILoggerFactory logger = Substitute.For<ILoggerFactory>();
-        var flyballGameDaySettings = serviceProvider.GetService<IOptions<FlyballGameDaySettings>>();
-        var dateTimeService = (IDateTimeService)serviceProvider.GetService(typeof(IDateTimeService))!;
-        _sut = new TournamentApiFunctions(logger, flyballGameDaySettings, dateTimeService);
+        _factory = factory;
+        _fut = new TournamentApiFunctions(_factory.Logger, _factory.OptionsForDatabase, _factory.DateTimeService);
     }
   
     [Fact]
-    public async Task Create_ShouldReturnOkWithTournament_WhenCalledWithValidTournament()
+    public async Task Create_ShouldReturnOk_WhenCalledWithValidTournament()
     {
        
         var tournament = new Tournament()
@@ -47,10 +26,21 @@ public sealed class CreateTournamentApiTests : IClassFixture<TournamentApiFactor
         
         var bytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(tournament));
         var body = new MemoryStream(bytes);
-        _request.Body.Returns(body);
+        _factory.Request.Body.Returns(body);
         
-        var result = await _sut.Create(_request);
+        var result = await _fut.Create(_factory.Request);
 
         result.StatusCode.ShouldBe(HttpStatusCode.OK);
+    }
+    
+    [Fact]
+    public async Task Create_ShouldReturnBadRequest_WhenCalledWithNullTournament()
+    {
+        var body = new MemoryStream();
+        _factory.Request.Body.Returns(body);
+        
+        var result = await _fut.Create(_factory.Request);
+
+        result.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
     }
 }

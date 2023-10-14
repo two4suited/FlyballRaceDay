@@ -1,10 +1,4 @@
 using System.Security.Claims;
-using System.Text;
-using System.Text.Json;
-using Microsoft.Azure.Functions.Worker;
-using Microsoft.Azure.Functions.Worker.Http;
-using Microsoft.Extensions.DependencyInjection;
-using NSubstitute;
 using NSubstitute.Exceptions;
 
 namespace Functions.Tests;

@@ -1,6 +1,6 @@
 ﻿namespace FunctionHelper;
 
-public abstract class ApiBaseClass<TClass,TData,TViewModel> where TClass : class where TViewModel : new() where TData : DataModel
+public abstract class ApiBaseClass<TClass,TData,TViewModel>: IApiBaseClass where TClass : class where TViewModel : new() where TData : DataModel 
 {
     private readonly ILogger _logger;
     public readonly IMongoCollection<TData> Collection;

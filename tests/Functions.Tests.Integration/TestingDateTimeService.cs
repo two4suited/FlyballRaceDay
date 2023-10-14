@@ -1,5 +1,3 @@
-using FunctionHelper;
-
 namespace Functions.Tests;
 
 public class TestingDateTimeService : IDateTimeService
