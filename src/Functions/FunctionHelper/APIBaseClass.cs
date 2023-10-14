@@ -12,10 +12,10 @@ public abstract class ApiBaseClass<TClass,TData,TViewModel>: IApiBaseClass where
             flyballStoreDatabaseSettings.Value.ConnectionString);
 
         var mongoDatabase = mongoClient.GetDatabase(
-            flyballStoreDatabaseSettings.Value.DatabaseName);
+            databaseName);
 
         Collection = mongoDatabase.GetCollection<TData>(
-            databaseName);
+            flyballStoreDatabaseSettings.Value.CollectionName);
     }
 
     public async Task<HttpResponseData> Create(HttpRequestData request)

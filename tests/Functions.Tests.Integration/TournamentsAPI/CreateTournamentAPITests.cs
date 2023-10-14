@@ -1,28 +1,16 @@
 namespace Functions.Tests.TournamentsAPI;
 
-public sealed class CreateTournamentApiTests : IClassFixture<FunctionFactory>
+public sealed class CreateTournamentApiTests : BaseTournamentApiTests
 {
   
-    private FunctionFactory _factory;
-    private TournamentApiFunctions _fut;
-    public CreateTournamentApiTests(FunctionFactory factory)
-    {
-        factory.CreateFunction();
-        _factory = factory;
-        _fut = new TournamentApiFunctions(_factory.Logger, _factory.OptionsForDatabase, _factory.DateTimeService);
-    }
+    public CreateTournamentApiTests(FunctionFactory factory) : base(factory) { }
+    
+    
   
     [Fact]
     public async Task Create_ShouldReturnOk_WhenCalledWithValidTournament()
     {
-       
-        var tournament = new Tournament()
-        {
-            EndDate = DateTime.Now,
-            EventName = "Test Event",
-            StartDate = DateTime.Now,
-            NumberOfLanes = 2
-        };
+        var tournament = _tournamentGenerator.Generate();
         
        var bytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(tournament));
        var body = new MemoryStream(bytes);
@@ -47,24 +35,14 @@ public sealed class CreateTournamentApiTests : IClassFixture<FunctionFactory>
     [Fact]
     public async Task Create_ShouldID_WhenCalledWithValidTournament()
     {
-       
-        var tournament = new Tournament()
-        {
-            EndDate = DateTime.Now,
-            EventName = "Test Event",
-            StartDate = DateTime.Now,
-            NumberOfLanes = 2
-        };
+        var tournament = _tournamentGenerator.Generate();
         
         var bytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(tournament));
         var body = new MemoryStream(bytes);
         _factory.Request.Body.Returns(body);
         
         var result = await _fut.Create(_factory.Request);
-        result.Body.Seek(0, SeekOrigin.Begin);
-        var reader = new StreamReader(result.Body);
-        var text = reader.ReadToEnd();
-        var returnedTournament = JsonSerializer.Deserialize<Tournament>(text);
+        var returnedTournament = TestHelpers.DeserializeHttpResponseData<Tournament>(result);
 
         returnedTournament.Id.ShouldNotBeNull();
     }

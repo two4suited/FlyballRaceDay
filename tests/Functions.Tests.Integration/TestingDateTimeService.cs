@@ -2,10 +2,5 @@ namespace Functions.Tests;
 
 public class TestingDateTimeService : IDateTimeService
 {
-    public TestingDateTimeService(DateTime date)
-    {
-        CurrentDay = date;
-    }
-
-    public DateTime CurrentDay { get; }
+    public DateTime CurrentDay => DateTime.Now;
 }
