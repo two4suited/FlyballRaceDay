@@ -61,7 +61,10 @@ public sealed class CreateTournamentApiTests : IClassFixture<FunctionFactory>
         _factory.Request.Body.Returns(body);
         
         var result = await _fut.Create(_factory.Request);
-        var returnedTournament = JsonSerializer.Deserialize<Tournament>(result.Body);
+        result.Body.Seek(0, SeekOrigin.Begin);
+        var reader = new StreamReader(result.Body);
+        var text = reader.ReadToEnd();
+        var returnedTournament = JsonSerializer.Deserialize<Tournament>(text);
 
         returnedTournament.Id.ShouldNotBeNull();
     }
