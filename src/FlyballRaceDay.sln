@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functions.Tests.Integration
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{01B9C095-DC9F-4E16-9C72-70DAF0D47711}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{90DFF40D-5ED8-4F4D-943A-72D2F5A592F9}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\RunDotNetTests.yml = ..\.github\workflows\RunDotNetTests.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -21,7 +21,7 @@ jobs:
         dotnet-version: '7.0'  # Replace with your .NET Core version
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore tests/Functions.Tests.Integration/Functions.Tests.Integration.csproj
 
     - name: Build
       run: dotnet build --configuration Release --no-restore
