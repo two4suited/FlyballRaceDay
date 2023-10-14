@@ -43,4 +43,26 @@ public sealed class CreateTournamentApiTests : IClassFixture<FunctionFactory>
 
         result.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
     }
+    
+    [Fact]
+    public async Task Create_ShouldID_WhenCalledWithValidTournament()
+    {
+       
+        var tournament = new Tournament()
+        {
+            EndDate = DateTime.Now,
+            EventName = "Test Event",
+            StartDate = DateTime.Now,
+            NumberOfLanes = 2
+        };
+        
+        var bytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(tournament));
+        var body = new MemoryStream(bytes);
+        _factory.Request.Body.Returns(body);
+        
+        var result = await _fut.Create(_factory.Request);
+        var returnedTournament = JsonSerializer.Deserialize<Tournament>(result.Body);
+
+        returnedTournament.Id.ShouldNotBeNull();
+    }
 }
