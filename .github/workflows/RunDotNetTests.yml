@@ -24,7 +24,7 @@ jobs:
       run: dotnet restore tests/Functions.Tests.Integration/Functions.Tests.Integration.csproj
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build tests/Functions.Tests.Integration/Functions.Tests.Integration.csproj --configuration Release --no-restore
 
     - name: Test
       run: dotnet test tests/Functions.Tests.Integration/Functions.Tests.Integration.csproj --no-restore --verbosity normal
