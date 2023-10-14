@@ -12,8 +12,8 @@ public class GetAllActiveTournamentsTests  : BaseTournamentApiTests
         //Arrange
         var tournament1 = _tournamentDataGenerator.Generate();
         var tournament2 = _tournamentDataGenerator.Generate();
-        tournament2.StartDate.AddDays(-10);
-        tournament2.EndDate.AddDays(-10);
+        tournament2.StartDate = tournament2.StartDate.AddDays(-10);
+        tournament2.EndDate = tournament2.EndDate.AddDays(-10);
         
         var mongoClient = new MongoClient(
             _factory.OptionsForDatabase.Value.ConnectionString);
