@@ -24,10 +24,10 @@ public sealed class CreateTournamentApiTests : IClassFixture<FunctionFactory>
             NumberOfLanes = 2
         };
         
-        var bytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(tournament));
-        var body = new MemoryStream(bytes);
-        _factory.Request.Body.Returns(body);
-        
+       var bytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(tournament));
+       var body = new MemoryStream(bytes);
+       _factory.Request.Body.Returns(body);
+
         var result = await _fut.Create(_factory.Request);
 
         result.StatusCode.ShouldBe(HttpStatusCode.OK);

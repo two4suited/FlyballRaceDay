@@ -41,7 +41,6 @@ public  class FunctionFactory : IAsyncLifetime
         var serviceProvider = serviceCollection.BuildServiceProvider();
         Context.InstanceServices.ReturnsForAnyArgs(serviceProvider);
         
-        
        Logger = Substitute.For<ILoggerFactory>();
        OptionsForDatabase = serviceProvider.GetService<IOptions<FlyballGameDaySettings>>();
        DateTimeService = (IDateTimeService)serviceProvider.GetService(typeof(IDateTimeService))!;
