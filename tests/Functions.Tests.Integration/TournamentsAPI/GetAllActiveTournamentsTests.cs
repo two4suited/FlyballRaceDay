@@ -12,9 +12,7 @@ public class GetAllActiveTournamentsTests  : BaseTournamentApiTests
         //Arrange
         var tournament1 = _tournamentDataGenerator.Generate();
         var tournament2 = _tournamentDataGenerator.Generate();
-        tournament2.StartDate = tournament2.StartDate.AddDays(-10);
-        tournament2.EndDate = tournament2.EndDate.AddDays(-10);
-        
+    
         var mongoClient = new MongoClient(
             _factory.OptionsForDatabase.Value.ConnectionString);
 
@@ -23,6 +21,8 @@ public class GetAllActiveTournamentsTests  : BaseTournamentApiTests
 
         var collection = mongoDatabase.GetCollection<TournamentDataModel>(
             _factory.OptionsForDatabase.Value.CollectionName);
+        
+        await mongoDatabase.DropCollectionAsync(_factory.OptionsForDatabase.Value.CollectionName);
         
         await collection.InsertOneAsync(tournament1);
         await collection.InsertOneAsync(tournament2);
@@ -50,6 +50,8 @@ public class GetAllActiveTournamentsTests  : BaseTournamentApiTests
 
         var collection = mongoDatabase.GetCollection<TournamentDataModel>(
             _factory.OptionsForDatabase.Value.CollectionName);
+        
+        await mongoDatabase.DropCollectionAsync(_factory.OptionsForDatabase.Value.CollectionName);
         
         await collection.InsertOneAsync(tournament1);
         await collection.InsertOneAsync(tournament2);
