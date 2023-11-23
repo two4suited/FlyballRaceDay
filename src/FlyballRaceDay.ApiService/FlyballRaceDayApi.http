@@ -1,9 +1,15 @@
-POST http://localhost:5458/tournament
+@url =http://localhost:5458/tournament
+
+POST {{url}}
 Content-Type: application/json
 
 {
   "EventName": "Turkey Time",
-  "StartDate": "2023-11-23T00:00:00Z",
-  "EndDate": "2023-11-23T00:00:00Z",
+  "StartDate": "2023-11-23",
+  "EndDate": "2023-11-23",
   "NumberOfLanes" : 2
 }
+###
+ GET {{url}}
+
+
