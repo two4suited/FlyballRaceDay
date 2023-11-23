@@ -1,8 +1,16 @@
+using FlyballRaceDay.Shared;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
-var apiservice = builder.AddProject<Projects.FlyballRaceDay_ApiService>("apiservice");
+var cache = builder.AddRedisContainer(ServicesLocator.RedisCache);
+var postgresdb = builder.AddPostgresContainer(ServicesLocator.DatabaseContainer)
+    .AddDatabase(ServicesLocator.Database);
 
-builder.AddProject<Projects.FlyballRaceDay_Web>("webfrontend")
-    .WithReference(apiservice);
+var apiservice = builder.AddProject<Projects.FlyballRaceDay_ApiService>(ServicesLocator.ApiApplication)
+    .WithReference(postgresdb);
+
+builder.AddProject<Projects.FlyballRaceDay_Web>(ServicesLocator.WebApplication)
+    .WithReference(apiservice)
+    .WithReference(cache);
 
 builder.Build().Run();

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FlyballRaceDay.ApiService\FlyballRaceDay.ApiService.csproj" />
+    <ProjectReference Include="..\FlyballRaceDay.Shared\FlyballRaceDay.Shared.csproj" />
     <ProjectReference Include="..\FlyballRaceDay.Web\FlyballRaceDay.Web.csproj" />
   </ItemGroup>
 
