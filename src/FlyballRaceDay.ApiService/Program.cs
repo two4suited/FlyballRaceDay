@@ -1,3 +1,6 @@
+using FlyballRaceDay.ApiService.Race;
+using FlyballRaceDay.ApiService.Ring;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
@@ -23,6 +26,8 @@ if (app.Environment.IsDevelopment())
 app.UseExceptionHandler();
 
 app.MapGroup("/tournament").MapTournamentApis().WithTags("Tournament").WithOpenApi();
+app.MapGroup("/ring").MapRingApis().WithTags("Ring").WithOpenApi();
+app.MapGroup("/race").MapRaceApis().WithTags("Race").WithOpenApi();
 
 app.MapDefaultEndpoints();
 

@@ -1,6 +1,6 @@
-namespace FlyballRaceDay.ApiService.Database;
+namespace FlyballRaceDay.ApiService.Ring;
 
-public class Ring : DataModel
+public class RingView
 {
     public string TournamentId { get; set; }
     public string Name { get; set; }
