@@ -1,8 +1,7 @@
 namespace FlyballRaceDay.ApiService.Database;
 
-public class Race 
+public class Race : DataModel
 {
-    public string Id { get; set; }
     public string TournamentId { get; set; }
     public string RaceNumber { get; set; }
     public string LeftLaneTeam { get; set; }

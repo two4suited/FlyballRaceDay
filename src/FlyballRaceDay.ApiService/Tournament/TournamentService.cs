@@ -1,23 +1,26 @@
+using FlyballRaceDay.ApiService.Services;
+using Microsoft.EntityFrameworkCore;
+
 namespace FlyballRaceDay.ApiService.Tournament;
 
-public class TournamentService(FlyballRaceDayDbContext context,TimeProvider timeProvider) {
-
-    
+public class TournamentService(FlyballRaceDayDbContext context,TimeProvider timeProvider,ILoggerFactory loggerFactory) : DataService<Database.Tournament,TournamentCreate,TournamentView>(loggerFactory,context) 
+{
     public async Task<TournamentView> CreateTournament(TournamentCreate tournamentCreate)
     {
-        var newTournament = Mapper.Map<TournamentCreate,Database.Tournament>(tournamentCreate);
-        
-        var tournament = context.Tournaments.Add(newTournament);
-        await context.SaveChangesAsync();
-
-        return Mapper.Map<Database.Tournament, TournamentView>(tournament.Entity);
+        return await Create(tournamentCreate);
     }
 
     public async Task<List<TournamentView>> GetActiveTournaments()
     {
-        var activeTournaments =
-            context.Tournaments.Where(x => x.StartDate >= DateOnly.FromDateTime(timeProvider.GetLocalNow().DateTime));
+        return await Where(x => x.StartDate >= DateOnly.FromDateTime(timeProvider.GetLocalNow().DateTime));
+    }
+    public async Task<TournamentView> UpdateTournament(TournamentCreate tournamentCreate, int id)
+    {
+        return await Update(tournamentCreate, id);
+    }
 
-        return activeTournaments.ToList().MapList(Mapper.Map<Database.Tournament, TournamentView>);
+    public async Task DeleteTournament(int id)
+    {
+        await Delete(id);
     }
 }
