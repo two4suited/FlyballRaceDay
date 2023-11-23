@@ -1,6 +1,6 @@
-namespace FlyballRaceDay.ApiService.Database;
+namespace FlyballRaceDay.ApiService.Models;
 
-public class Tournament 
+public class TournamentView
 {
     public int Id { get; set; }
     public string EventName { get; set; }

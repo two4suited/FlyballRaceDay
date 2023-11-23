@@ -1,14 +1,16 @@
 using FlyballRaceDay.ApiService;
+using FlyballRaceDay.ApiService.Models;
+using FlyballRaceDay.ApiService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
-builder.AddNpgsqlDbContext<FlyballRaceDayDbContext>(ServicesLocator.DatabaseContainer);
+builder.AddNpgsqlDbContext<FlyballRaceDayDbContext>(ServicesLocator.Database);
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
-
+builder.Services.AddScoped<TournamentService>();
 
 var app = builder.Build();
 
@@ -32,6 +34,8 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 });
+
+app.MapPost("/tournament", (TournamentCreate tournament, TournamentService service) => service.CreateTournament(tournament));
 
 app.MapDefaultEndpoints();
 

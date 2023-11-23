@@ -1,10 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Npgsql;
 
 namespace FlyballRaceDay.ApiService.Database;
 
-public class FlyballRaceDayDbContext(DbContextOptions<FlyballRaceDayDbContext> options) : DbContext(options)
+public class FlyballRaceDayDbContext : DbContext
 {
+    public FlyballRaceDayDbContext(DbContextOptions<FlyballRaceDayDbContext> options) : base(options)
+    {
+        Database.EnsureCreated();
+    }
+
     public DbSet<Tournament> Tournaments => Set<Tournament>();
     public DbSet<Race> Race => Set<Race>();
     public DbSet<Ring> Ring => Set<Ring>();

@@ -16,9 +16,4 @@
     <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-preview.1.23557.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Race\" />
-    <Folder Include="Ring\" />
-  </ItemGroup>
-
 </Project>
