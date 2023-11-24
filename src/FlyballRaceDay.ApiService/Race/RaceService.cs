@@ -1,34 +1,49 @@
+using FlyballRaceDay.ApiService.Services;
+using Microsoft.EntityFrameworkCore;
+
 namespace FlyballRaceDay.ApiService.Race;
 
-public class RaceService : IRaceService
+public class RaceService(FlyballRaceDayDbContext context,LoggerFactory loggerFactory) : DataService<Database.Race,RaceCreate,RaceView>(loggerFactory,context),IRaceService
 {
-    public async Task<List<RaceView>> CreateSchedule(RaceCreate newRace)
+    public async Task<RaceView> CreateRace(RaceCreate newRace)
+    {
+        return await Create(newRace);
+    }
+
+    public async Task<List<RaceView>> CreateSchedule(string schedule)
     {
         throw new NotImplementedException();
     }
 
     public async Task<List<RaceView>> GetScheduleByTournamentId(int tournamentId)
     {
-        throw new NotImplementedException();
+        return await Where(x => x.TournamentId == tournamentId);
     }
 
     public async Task DeleteRace(int raceId)
     {
-        throw new NotImplementedException();
+        await Delete(raceId);
     }
 
     public async Task<List<RaceView>> GetUpcomingRaces(int tournamentId)
     {
-        throw new NotImplementedException();
+        var upcomingRaces = await Where(x => x.TournamentId == tournamentId && x.Done == false);
+        return upcomingRaces;
     }
 
     public async Task MarkRaceAsDone(int raceId)
     {
-        throw new NotImplementedException();
+        var raceToUpdate = await context.Race.SingleAsync(x => x.Id == raceId);
+        raceToUpdate.Done = true;
+        context.Update(raceToUpdate);
+        await context.SaveChangesAsync();
     }
 
     public async Task AddRaceToRing(int raceId, int ringId)
     {
-        throw new NotImplementedException();
+        var raceToUpdate = await context.Race.SingleAsync(x => x.Id == raceId);
+        raceToUpdate.RingId = ringId;
+        context.Update(raceToUpdate);
+        await context.SaveChangesAsync();
     }
 }

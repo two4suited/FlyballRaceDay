@@ -4,7 +4,7 @@ public static class RaceApi
 {
     public static RouteGroupBuilder MapRaceApis(this RouteGroupBuilder group)
     {
-        group.MapPost("/", (RaceCreate race, IRaceService service) => service.CreateSchedule(race));
+        group.MapPost("/", (RaceCreate race, IRaceService service) => service.CreateRace(race));
         group.MapGet("/schedule/{tournamentId}",
             (int tournamentId, IRaceService service) => service.GetScheduleByTournamentId(tournamentId));
         group.MapGet("/upcoming/{tournamentId}",
