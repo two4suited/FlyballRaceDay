@@ -12,7 +12,9 @@ builder.AddNpgsqlDbContext<FlyballRaceDayDbContext>(ServicesLocator.Database);
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
-builder.Services.AddScoped<TournamentService>();
+builder.Services.AddScoped<ITournamentService,TournamentService>();
+builder.Services.AddScoped<IRingService, RingService>();
+builder.Services.AddScoped<IRaceService, RaceService>();
 
 var app = builder.Build();
 
