@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 namespace FlyballRaceDay.ApiService.Race;
 
 public static class RaceApi
