@@ -1,26 +1,16 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functions", "Functions", "{FB8949DD-EDEF-49F6-AF89-FE3C43859113}"
+VisualStudioVersion = 17.8.0.0
+MinimumVisualStudioVersion = 17.8.0.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyballRaceDay.AppHost", "FlyballRaceDay.AppHost\FlyballRaceDay.AppHost.csproj", "{EF5670C1-309B-4C7A-82CF-680840E76129}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaceAPI", "Functions\RaceAPI\RaceAPI.csproj", "{2AC161C3-DD06-4CD3-9030-2707BA12C051}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyballRaceDay.ServiceDefaults", "FlyballRaceDay.ServiceDefaults\FlyballRaceDay.ServiceDefaults.csproj", "{26642D21-FAC7-41CE-910A-D6CFD8D65C38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RingAPI", "Functions\RingAPI\RingAPI.csproj", "{FE4708D3-A41F-45CC-AC60-62004C2DDF16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyballRaceDay.ApiService", "FlyballRaceDay.ApiService\FlyballRaceDay.ApiService.csproj", "{40140ACF-D99A-4D58-BCB8-2BDDAF7D831F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TournamentAPI", "Functions\TournamentAPI\TournamentAPI.csproj", "{B7128E30-D20F-4FC5-B604-FCEA63559E16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyballRaceDay.Web", "FlyballRaceDay.Web\FlyballRaceDay.Web.csproj", "{BE022DAC-56BF-43B8-AEE6-931AF22333FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionHelper", "Functions\FunctionHelper\FunctionHelper.csproj", "{DC829EB2-DE50-419A-8814-6F3EAF835A03}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functions.Tests.Integration", "..\tests\Functions.Tests.Integration\Functions.Tests.Integration.csproj", "{40ABB5BE-6679-44D5-93FC-BA6409DE2F4E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{01B9C095-DC9F-4E16-9C72-70DAF0D47711}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{90DFF40D-5ED8-4F4D-943A-72D2F5A592F9}"
-	ProjectSection(SolutionItems) = preProject
-		..\.github\workflows\RunDotNetTests.yml = ..\.github\workflows\RunDotNetTests.yml
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyballRaceDay.Shared", "FlyballRaceDay.Shared\FlyballRaceDay.Shared.csproj", "{AEBDA113-2F63-44AF-B8A1-2B0D089C9800}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,38 +18,31 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2AC161C3-DD06-4CD3-9030-2707BA12C051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2AC161C3-DD06-4CD3-9030-2707BA12C051}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2AC161C3-DD06-4CD3-9030-2707BA12C051}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2AC161C3-DD06-4CD3-9030-2707BA12C051}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE4708D3-A41F-45CC-AC60-62004C2DDF16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE4708D3-A41F-45CC-AC60-62004C2DDF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE4708D3-A41F-45CC-AC60-62004C2DDF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE4708D3-A41F-45CC-AC60-62004C2DDF16}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B7128E30-D20F-4FC5-B604-FCEA63559E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B7128E30-D20F-4FC5-B604-FCEA63559E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B7128E30-D20F-4FC5-B604-FCEA63559E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B7128E30-D20F-4FC5-B604-FCEA63559E16}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC829EB2-DE50-419A-8814-6F3EAF835A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC829EB2-DE50-419A-8814-6F3EAF835A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC829EB2-DE50-419A-8814-6F3EAF835A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC829EB2-DE50-419A-8814-6F3EAF835A03}.Release|Any CPU.Build.0 = Release|Any CPU
-		{40ABB5BE-6679-44D5-93FC-BA6409DE2F4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40ABB5BE-6679-44D5-93FC-BA6409DE2F4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40ABB5BE-6679-44D5-93FC-BA6409DE2F4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40ABB5BE-6679-44D5-93FC-BA6409DE2F4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF5670C1-309B-4C7A-82CF-680840E76129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF5670C1-309B-4C7A-82CF-680840E76129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF5670C1-309B-4C7A-82CF-680840E76129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF5670C1-309B-4C7A-82CF-680840E76129}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26642D21-FAC7-41CE-910A-D6CFD8D65C38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26642D21-FAC7-41CE-910A-D6CFD8D65C38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26642D21-FAC7-41CE-910A-D6CFD8D65C38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26642D21-FAC7-41CE-910A-D6CFD8D65C38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40140ACF-D99A-4D58-BCB8-2BDDAF7D831F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40140ACF-D99A-4D58-BCB8-2BDDAF7D831F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40140ACF-D99A-4D58-BCB8-2BDDAF7D831F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40140ACF-D99A-4D58-BCB8-2BDDAF7D831F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE022DAC-56BF-43B8-AEE6-931AF22333FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE022DAC-56BF-43B8-AEE6-931AF22333FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE022DAC-56BF-43B8-AEE6-931AF22333FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE022DAC-56BF-43B8-AEE6-931AF22333FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEBDA113-2F63-44AF-B8A1-2B0D089C9800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEBDA113-2F63-44AF-B8A1-2B0D089C9800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEBDA113-2F63-44AF-B8A1-2B0D089C9800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEBDA113-2F63-44AF-B8A1-2B0D089C9800}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{2AC161C3-DD06-4CD3-9030-2707BA12C051} = {FB8949DD-EDEF-49F6-AF89-FE3C43859113}
-		{FE4708D3-A41F-45CC-AC60-62004C2DDF16} = {FB8949DD-EDEF-49F6-AF89-FE3C43859113}
-		{B7128E30-D20F-4FC5-B604-FCEA63559E16} = {FB8949DD-EDEF-49F6-AF89-FE3C43859113}
-		{DC829EB2-DE50-419A-8814-6F3EAF835A03} = {FB8949DD-EDEF-49F6-AF89-FE3C43859113}
-		{40ABB5BE-6679-44D5-93FC-BA6409DE2F4E} = {01B9C095-DC9F-4E16-9C72-70DAF0D47711}
-	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CAEC77B5-1FF5-4E89-86CD-620314C521C4}
+		SolutionGuid = {8DCA290F-32C8-4A70-BC6F-1C2A28AF0938}
 	EndGlobalSection
 EndGlobal
