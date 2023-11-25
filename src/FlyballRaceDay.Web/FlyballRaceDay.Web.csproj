@@ -10,10 +10,12 @@
   <ItemGroup>
     <ProjectReference Include="..\FlyballRaceDay.ServiceDefaults\FlyballRaceDay.ServiceDefaults.csproj" />
     <ProjectReference Include="..\FlyballRaceDay.Shared\FlyballRaceDay.Shared.csproj" />
+    <ProjectReference Include="..\FlyballRaceDay.Web.Client\FlyballRaceDay.Web.Client.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" Version="8.0.0-preview.1.23557.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
   </ItemGroup>
 
 </Project>

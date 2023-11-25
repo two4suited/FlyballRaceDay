@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlyballRaceDay.ApiService.Race;
 
-public class RaceService(FlyballRaceDayDbContext context,LoggerFactory loggerFactory) : DataService<Database.Race,RaceCreate,RaceView>(loggerFactory,context),IRaceService
+public class RaceService(FlyballRaceDayDbContext context,ILoggerFactory loggerFactory) : DataService<Database.Race,RaceCreate,RaceView>(loggerFactory,context),IRaceService
 {
     public async Task<RaceView> CreateRace(RaceCreate newRace)
     {

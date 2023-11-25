@@ -1,5 +1,10 @@
 using FlyballRaceDay.ApiService.Race;
 using FlyballRaceDay.ApiService.Ring;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +20,8 @@ builder.Services.AddProblemDetails();
 builder.Services.AddScoped<ITournamentService,TournamentService>();
 builder.Services.AddScoped<IRingService, RingService>();
 builder.Services.AddScoped<IRaceService, RaceService>();
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 
