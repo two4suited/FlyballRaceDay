@@ -14,7 +14,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddHttpClient<WeatherApiClient>(client=> client.BaseAddress = new($"http://{ServicesLocator.ApiApplication}"));
+builder.Services.AddHttpClient<ApiClient>(client=> client.BaseAddress = new($"http://{ServicesLocator.ApiApplication}"));
 
 var app = builder.Build();
 

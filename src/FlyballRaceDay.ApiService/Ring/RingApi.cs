@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace FlyballRaceDay.ApiService.Ring;
 
@@ -11,7 +10,7 @@ public static class RingApi
         group.MapDelete("/", (int id, IRingService service) => service.DeleteRing(id));
         group.MapGet("{tournamentId}/GetRings",
             (IRingService service, int tournamentId) => service.GetRingByTournamentId(tournamentId));
-        group.MapGet("{id}",
+        group.MapPut("{id}",
             (int id, [FromBody] RingCreate ring, [FromServices] IRingService service) => service.UpdateRing(ring, id));
         return group;
     }

@@ -1,0 +1,54 @@
+@using Microsoft.Extensions.Logging.Console
+@inject ApiClient client
+@inject ILogger<CreateTournament> logger
+@using FlyballRaceDay.Shared
+@using System.Text.Json
+@using FlyballRaceDay.Shared.Tournament
+
+<h3>CreateTournament</h3>
+<EditForm Model="@Model" OnValidSubmit="@Submit" FormName="tournament-create">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>
+            Name of Tournament:
+            <InputText @bind-Value="Model!.EventName" />
+        </label>
+    </div>
+    <div>
+        <label>
+            Start Date:
+            <InputDate @bind-Value="Model!.StartDate" />
+        </label>
+    </div>
+    <div>
+        <label>
+            End Date:
+            <InputDate @bind-Value="Model!.EndDate"  />
+        </label>
+    </div>
+    <div>
+                <label>
+                    Number of Lanes:
+                    <InputNumber @bind-Value="Model!.NumberOfLanes" />
+                </label>
+            </div>
+    <button type="submit">Submit</button>
+    
+</EditForm>
+
+@code {
+    private TournamentCreate Model { get; set; }
+    
+    protected override void OnInitialized() =>
+        Model = new TournamentCreate(){ EndDate = DateOnly.FromDateTime(DateTime.Now) ,StartDate = DateOnly.FromDateTime(DateTime.Now), EventName= "Test",NumberOfLanes = 2};
+
+    private async Task Submit()
+    {
+        logger.LogInformation(JsonSerializer.Serialize(Model));
+        await client.AddTournament(Model);
+    }
+    
+    
+}

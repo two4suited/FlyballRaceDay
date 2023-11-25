@@ -1,3 +1,4 @@
+using FlyballRaceDay.Shared.Tournament;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlyballRaceDay.ApiService.Tournament;

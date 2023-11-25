@@ -1,5 +1,5 @@
 using FlyballRaceDay.ApiService.Services;
-using Microsoft.EntityFrameworkCore;
+using FlyballRaceDay.Shared.Tournament;
 
 namespace FlyballRaceDay.ApiService.Tournament;
 
@@ -12,7 +12,7 @@ public class TournamentService(FlyballRaceDayDbContext context,TimeProvider time
 
     public async Task<List<TournamentView>> GetActiveTournaments()
     {
-        return await Where(x => x.StartDate >= DateOnly.FromDateTime(timeProvider.GetLocalNow().DateTime));
+        return await Where(x => x.StartDate >= DateOnly.FromDateTime(DateTime.Now));
     }
     public async Task<TournamentView> UpdateTournament(TournamentCreate tournamentCreate, int id)
     {
