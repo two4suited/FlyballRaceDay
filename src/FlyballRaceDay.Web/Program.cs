@@ -14,7 +14,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddHttpClient<ApiClient>(client=> client.BaseAddress = new($"http://{ServicesLocator.ApiApplication}"));
+builder.Services.AddHttpClient<ApiServiceClient>(client=> client.BaseAddress = new($"http://{ServicesLocator.ApiApplication}"));
 
 var app = builder.Build();
 

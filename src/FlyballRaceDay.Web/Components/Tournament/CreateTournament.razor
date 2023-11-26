@@ -1,9 +1,9 @@
 @using Microsoft.Extensions.Logging.Console
-@inject ApiClient client
+@inject ApiServiceClient client
 @inject ILogger<CreateTournament> logger
-@using FlyballRaceDay.Shared
 @using System.Text.Json
-@using FlyballRaceDay.Shared.Tournament
+@rendermode InteractiveServer
+
 
 <h3>CreateTournament</h3>
 <EditForm Model="@Model" OnValidSubmit="@Submit" FormName="tournament-create">
@@ -39,15 +39,16 @@
 </EditForm>
 
 @code {
-    private TournamentCreate Model { get; set; }
+    private TournamentCreate? Model { get; set; }
+
+    protected override void OnInitialized() => Model ??= new() { StartDate = DateTime.Now,EndDate = DateTime.Now};
     
-    protected override void OnInitialized() =>
-        Model = new TournamentCreate(){ EndDate = DateOnly.FromDateTime(DateTime.Now) ,StartDate = DateOnly.FromDateTime(DateTime.Now), EventName= "Test",NumberOfLanes = 2};
 
     private async Task Submit()
     {
         logger.LogInformation(JsonSerializer.Serialize(Model));
-        await client.AddTournament(Model);
+        var response = await client.TournamentPOSTAsync(Model);
+        logger.LogInformation(JsonSerializer.Serialize(response));
     }
     
     
