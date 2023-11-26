@@ -1,0 +1,22 @@
+@using Microsoft.AspNetCore.Components.QuickGrid
+@rendermode InteractiveServer
+@inject ApiServiceClient client
+
+<h3>UpcomingTournaments</h3>
+
+<QuickGrid Items="@tournaments">
+    <PropertyColumn Property="@(p => p.EventName)" />
+    <PropertyColumn Property="@(p => p.StartDate)" Format="MM/dd/yyyy" />
+    <PropertyColumn Property="@(p => p.EndDate)" Format="MM/dd/yyyy" />
+    <PropertyColumn Property="@(p => p.NumberOfLanes)" />
+</QuickGrid>
+
+@code {
+    private IQueryable<TournamentView>? tournaments;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await client.TournamentAllAsync();
+        tournaments = response.AsQueryable();
+    }
+}
