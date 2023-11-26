@@ -17,7 +17,6 @@ It was built using .net 8 mininimal api's and blazor.
 
 - [Aspire](https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview)
 - [Blazor](https://learn.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-8.0)
-
 - [NSwag](https://github.com/RicoSuter/NSwag/wiki/CommandLine)
 
 ## Packages 
