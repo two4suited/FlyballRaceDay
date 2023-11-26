@@ -11,8 +11,9 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    env:
+      config: 'Release'
 
     steps:
     - uses: actions/checkout@v3
@@ -21,8 +22,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore src/FlyballRaceDay.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build src/FlyballRaceDay.sln --no-restore --configuration $config
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test src/FlyballRaceDay.sln --no-build --verbosity normal
