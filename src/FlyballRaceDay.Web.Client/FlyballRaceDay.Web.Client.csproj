@@ -12,4 +12,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FlyballRaceDay.Shared\FlyballRaceDay.Shared.csproj" />
+    <ProjectReference Include="..\FlyballRaceDay.Web.Shared\FlyballRaceDay.Web.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

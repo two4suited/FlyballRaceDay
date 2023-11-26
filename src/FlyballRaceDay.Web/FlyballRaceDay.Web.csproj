@@ -11,6 +11,7 @@
     <ProjectReference Include="..\FlyballRaceDay.ServiceDefaults\FlyballRaceDay.ServiceDefaults.csproj" />
     <ProjectReference Include="..\FlyballRaceDay.Shared\FlyballRaceDay.Shared.csproj" />
     <ProjectReference Include="..\FlyballRaceDay.Web.Client\FlyballRaceDay.Web.Client.csproj" />
+    <ProjectReference Include="..\FlyballRaceDay.Web.Shared\FlyballRaceDay.Web.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyballRaceDay.Shared", "Fl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyballRaceDay.Web.Client", "FlyballRaceDay.Web.Client\FlyballRaceDay.Web.Client.csproj", "{C06F545F-D121-4022-BE68-DD820E2E542C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyballRaceDay.Web.Shared", "FlyballRaceDay.Web.Shared\FlyballRaceDay.Web.Shared.csproj", "{611F8393-14E4-4383-91FE-504BCB6486E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{C06F545F-D121-4022-BE68-DD820E2E542C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C06F545F-D121-4022-BE68-DD820E2E542C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C06F545F-D121-4022-BE68-DD820E2E542C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{611F8393-14E4-4383-91FE-504BCB6486E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{611F8393-14E4-4383-91FE-504BCB6486E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{611F8393-14E4-4383-91FE-504BCB6486E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{611F8393-14E4-4383-91FE-504BCB6486E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
