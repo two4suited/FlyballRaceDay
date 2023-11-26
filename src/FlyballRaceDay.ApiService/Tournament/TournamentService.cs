@@ -12,7 +12,7 @@ public class TournamentService(FlyballRaceDayDbContext context,TimeProvider time
 
     public async Task<List<TournamentView>> GetActiveTournaments()
     {
-        return await Where(x => x.StartDate >= DateOnly.FromDateTime(DateTime.Now));
+        return await Where(x => x.StartDate >= DateOnly.FromDateTime(timeProvider.GetLocalNow().DateTime));
     }
     public async Task<TournamentView> UpdateTournament(TournamentCreate tournamentCreate, int id)
     {
