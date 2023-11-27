@@ -28,4 +28,4 @@ jobs:
     - name: Build
       run: dotnet build src/FlyballRaceDay.sln --no-restore --configuration $config
     - name: Test
-      run: dotnet test src/FlyballRaceDay.sln --no-build --verbosity normal
+      run: dotnet test tests/FlyballRaceDay.Tests/FlyballRaceDay.Tests.csproj --no-build --verbosity normal
