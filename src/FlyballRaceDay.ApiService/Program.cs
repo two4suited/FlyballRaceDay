@@ -2,6 +2,8 @@ using FlyballRaceDay.ApiService.Race;
 using FlyballRaceDay.ApiService.Ring;
 using Serilog;
 
+
+
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateLogger();
@@ -41,3 +43,5 @@ app.MapGroup("/race").MapRaceApis().WithTags("Race").WithOpenApi();
 app.MapDefaultEndpoints();
 
 app.Run();
+
+public partial class Program { }

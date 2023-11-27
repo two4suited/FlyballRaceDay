@@ -1,4 +1,4 @@
-namespace FlyballRaceDay.Shared.Tournament;
+namespace FlyballRaceDay.ApiService.Tournament;
 
 public class TournamentView
 {

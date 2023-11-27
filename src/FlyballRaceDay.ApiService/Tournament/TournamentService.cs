@@ -1,5 +1,4 @@
 using FlyballRaceDay.ApiService.Services;
-using FlyballRaceDay.Shared.Tournament;
 
 namespace FlyballRaceDay.ApiService.Tournament;
 

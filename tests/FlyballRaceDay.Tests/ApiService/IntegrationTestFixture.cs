@@ -1,3 +1,5 @@
+using FlyballRaceDay.ApiService.Tournament;
+
 namespace FlyballRaceDay.Tests.ApiService;
 
 public class IntegrationTestFixture : IAsyncLifetime
@@ -6,6 +8,12 @@ public class IntegrationTestFixture : IAsyncLifetime
     public ILoggerFactory Logger { get; set; }
     
     public Faker<Tournament> TournamentGenerator = new Faker<Tournament>()
+        .RuleFor(x => x.StartDate, DateOnly.FromDateTime(DateTime.Now))
+        .RuleFor(x => x.EventName, faker => faker.Lorem.Sentence())
+        .RuleFor(x => x.EndDate, DateOnly.FromDateTime(DateTime.Now))
+        .RuleFor(x => x.NumberOfLanes, faker => faker.Random.Number(1,10));
+    
+    public Faker<TournamentCreate> TournamentCreateGenerator = new Faker<TournamentCreate>()
         .RuleFor(x => x.StartDate, DateOnly.FromDateTime(DateTime.Now))
         .RuleFor(x => x.EventName, faker => faker.Lorem.Sentence())
         .RuleFor(x => x.EndDate, DateOnly.FromDateTime(DateTime.Now))

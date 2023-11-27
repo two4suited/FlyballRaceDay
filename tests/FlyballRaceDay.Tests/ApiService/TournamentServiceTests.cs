@@ -24,7 +24,16 @@ public class TournamentServiceTests(IntegrationTestFixture fixture) : IClassFixt
         var tournaments = await sut.GetActiveTournaments();
         
         tournaments.Count.ShouldBe(1);
+    }
 
+    [Fact]
+    public async Task GetActiveTournaments_ShouldReturnSameDayTournaments_WithDatetimeOffset()
+    {
+        var provider = new IntegrationTestDatabaseProvider(fixture.ConnectionString());
+        var dbContext = provider.CreateDbContext();
+
+        var currentDayTournament = fixture.TournamentCreateGenerator.Generate();
+        //currentDayTournament.EndDate = DateOnly.FromDateTime(DateTimeOffset.Now);
     }
 }
 
