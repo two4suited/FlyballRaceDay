@@ -13,4 +13,8 @@ Content-Type: application/json
 ###
  GET {{url}}
 
+###
+ DELETE {{url}}/1
 
+###
+GET {{url}}/1

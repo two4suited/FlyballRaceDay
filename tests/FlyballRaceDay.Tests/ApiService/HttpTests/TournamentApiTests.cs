@@ -64,7 +64,7 @@ public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballR
 
         await apiClient.TournamentDELETEAsync(newTournamentResponse.Id);
 
-        var blankTournament = apiClient.TournamentGETAsync(newTournamentResponse.Id);
+        var blankTournament = await apiClient.TournamentGETAsync(newTournamentResponse.Id);
         
         blankTournament.ShouldBeNull();
     }

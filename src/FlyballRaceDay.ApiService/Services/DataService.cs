@@ -21,7 +21,7 @@ public abstract class DataService<TData,TCreate,TView>(ILoggerFactory loggerFact
 
     protected async Task<TView> GetById(int id)
     {
-        var objectReturn = context.Set<TData>().First(x => x.Id == id);
+        var objectReturn = await context.Set<TData>().FindAsync(id);
         return Mapper.Map<TData, TView>(objectReturn); 
     }
     
@@ -36,7 +36,8 @@ public abstract class DataService<TData,TCreate,TView>(ILoggerFactory loggerFact
 
     protected async Task Delete(int id)
     {
-        var objectToDelete = context.Set<TData>().FirstAsync(x => x.Id == id);
+        //var objectToDelete = context.Set<TData>().FirstAsync(x => x.Id == id);
+        var objectToDelete = await context.Set<TData>().FindAsync(id);
         context.Remove(objectToDelete);
         await context.SaveChangesAsync();
     }
