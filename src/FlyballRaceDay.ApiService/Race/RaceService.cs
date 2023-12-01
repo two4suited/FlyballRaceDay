@@ -33,7 +33,7 @@ public class RaceService(FlyballRaceDayDbContext context,ILoggerFactory loggerFa
 
     public async Task MarkRaceAsDone(int raceId)
     {
-        var raceToUpdate = await context.Race.SingleAsync(x => x.Id == raceId);
+        var raceToUpdate = await context.Races.SingleAsync(x => x.Id == raceId);
         raceToUpdate.Done = true;
         context.Update(raceToUpdate);
         await context.SaveChangesAsync();
@@ -41,7 +41,7 @@ public class RaceService(FlyballRaceDayDbContext context,ILoggerFactory loggerFa
 
     public async Task AddRaceToRing(int raceId, int ringId)
     {
-        var raceToUpdate = await context.Race.SingleAsync(x => x.Id == raceId);
+        var raceToUpdate = await context.Races.SingleAsync(x => x.Id == raceId);
         raceToUpdate.RingId = ringId;
         context.Update(raceToUpdate);
         await context.SaveChangesAsync();

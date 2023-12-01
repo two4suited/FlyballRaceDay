@@ -1,5 +1,4 @@
 using FlyballRaceDay.ApiService.Race;
-using FlyballRaceDay.ApiService.Ring;
 using Serilog;
 
 
@@ -31,6 +30,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    
+    // This Sleep was added to let the database get created in docker
+    Thread.Sleep(2000);
+    app.SeedDatabase();
 }
 
 // Configure the HTTP request pipeline.

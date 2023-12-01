@@ -1,4 +1,4 @@
-namespace FlyballRaceDay.Tests.ApiService;
+namespace FlyballRaceDay.Tests.ApiService.HttpTests;
 
 public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballRaceDayDbContext> factory) : IClassFixture<ApiServiceWebApplicationFactory<Program,FlyballRaceDayDbContext>>
 {

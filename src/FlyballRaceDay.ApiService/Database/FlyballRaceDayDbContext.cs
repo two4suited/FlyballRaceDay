@@ -11,8 +11,8 @@ public class FlyballRaceDayDbContext : DbContext
     }
 
     public DbSet<Tournament> Tournaments => Set<Tournament>();
-    public DbSet<Race> Race => Set<Race>();
-    public DbSet<Ring> Ring => Set<Ring>();
+    public DbSet<Race> Races => Set<Race>();
+    public DbSet<Ring> Rings => Set<Ring>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -27,4 +27,6 @@ public class FlyballRaceDayDbContext : DbContext
             .UseHiLo("catalog_type_hilo")
             .IsRequired();
     }
+
+   
 }
