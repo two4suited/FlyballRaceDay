@@ -30,10 +30,16 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    if (!app.Environment.IsEnvironment("Tests"))
+    {
+        // This Sleep was added to let the database get created in docker
+        Thread.Sleep(2000);
+        app.SeedDatabase();
+    }
     
-    // This Sleep was added to let the database get created in docker
-    Thread.Sleep(2000);
-    app.SeedDatabase();
+   
+    
 }
 
 // Configure the HTTP request pipeline.

@@ -1,19 +1,4 @@
-using System.Data.Common;
-using FlyballRaceDay.ApiService.Race;
-using FlyballRaceDay.ApiService.Ring;
-using FlyballRaceDay.ApiService.Tournament;
-using FlyballRaceDay.Shared;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Hosting;
-using Npgsql;
-
-namespace FlyballRaceDay.Tests.ApiService;
+namespace FlyballRaceDay.Tests.ApiService.HttpTests;
 
 public class ApiServiceWebApplicationFactory<TProgram,TDbContext> : WebApplicationFactory<TProgram>,IAsyncLifetime where TProgram :class where TDbContext : DbContext
 {
@@ -31,6 +16,7 @@ public class ApiServiceWebApplicationFactory<TProgram,TDbContext> : WebApplicati
                 { { "ConnectionStrings:flyballraceday", _container.GetConnectionString() } })
             .Build();
         builder.UseConfiguration(config);
+        builder.UseEnvironment("Tests");
     }
 
     public async Task InitializeAsync() => await _container.StartAsync();
