@@ -1,3 +1,5 @@
+using FlyballRaceDay.Shared;
+
 namespace FlyballRaceDay.Web;
 
 public class ApiClient(HttpClient client) 

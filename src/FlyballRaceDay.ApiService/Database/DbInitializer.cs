@@ -22,7 +22,7 @@ internal class DbInitializer
                 EndDate = DateOnly.FromDateTime(DateTime.Now.AddDays(i)),
                 StartDate = DateOnly.FromDateTime(DateTime.Now.AddDays(i)),
                 EventName = $"Tournament Number {i}",
-                NumberOfLanes = numberOfRings
+                NumberOfRings = numberOfRings
             });
   
             for (var ringCounters = 1; ringCounters <=  numberOfRings; ringCounters++)
