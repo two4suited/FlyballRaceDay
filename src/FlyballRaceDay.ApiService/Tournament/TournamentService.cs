@@ -22,4 +22,9 @@ public class TournamentService(FlyballRaceDayDbContext context,TimeProvider time
     {
         await Delete(id);
     }
+
+    public async Task<TournamentView> GetTournament(int id)
+    {
+        return await GetById(id);
+    }
 }

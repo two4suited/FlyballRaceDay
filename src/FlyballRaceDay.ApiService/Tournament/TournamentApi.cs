@@ -8,6 +8,7 @@ public static class TournamentApi
     {
         group.MapPost("/", (TournamentCreate tournament, ITournamentService service) => service.CreateTournament(tournament));
         group.MapGet("/", (ITournamentService service) =>  service.GetActiveTournaments());
+        group.MapGet("/{id}", (int id, ITournamentService service) =>  service.GetTournament(id));
         group.MapPut("/{id}", (int id,[FromBody]TournamentCreate tournament,[FromServices]ITournamentService service) => service.UpdateTournament(tournament,id));
         group.MapDelete("/{id}", (int id,ITournamentService service) => service.DeleteTournament(id));
 

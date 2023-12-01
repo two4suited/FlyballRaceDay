@@ -19,6 +19,12 @@ public abstract class DataService<TData,TCreate,TView>(ILoggerFactory loggerFact
         return queryResults.MapList(Mapper.Map<TData, TView>);
     }
 
+    protected async Task<TView> GetById(int id)
+    {
+        var objectReturn = context.Set<TData>().First(x => x.Id == id);
+        return Mapper.Map<TData, TView>(objectReturn); 
+    }
+    
     protected async Task<TView> Update(TCreate create, int id)
     {
         var objectToUpdate = Mapper.Map<TCreate,TData>(create);

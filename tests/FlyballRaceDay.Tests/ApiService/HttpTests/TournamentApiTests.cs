@@ -46,6 +46,28 @@ public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballR
         
         tournaments.Count.ShouldBe(1);
     }
+    
+    [Fact]
+    public async Task Delete_ShouldRemoveTournament()
+    {
+        using var client = factory.CreateClient();
+        var apiClient = new ApiServiceClient(client);
+
+        var newTournament = new FlyballRaceDay.Shared.TournamentCreate()
+        {
+            EventName = "test",
+            EndDate = DateTimeOffset.Now,
+            StartDate = DateTimeOffset.Now,
+            NumberOfRings = 2
+        };
+        var newTournamentResponse = await apiClient.TournamentPOSTAsync(newTournament, new CancellationToken());
+
+        await apiClient.TournamentDELETEAsync(newTournamentResponse.Id);
+
+        var blankTournament = apiClient.TournamentGETAsync(newTournamentResponse.Id);
+        
+        blankTournament.ShouldBeNull();
+    }
 
     [Fact]
     public async Task Update_ChangeEventNameReturnsNewEventName()

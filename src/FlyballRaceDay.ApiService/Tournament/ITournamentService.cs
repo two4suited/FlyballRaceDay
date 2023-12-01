@@ -6,4 +6,5 @@ public interface ITournamentService
     Task<List<TournamentView>> GetActiveTournaments();
     Task<TournamentView> UpdateTournament(TournamentCreate tournamentCreate, int id);
     Task DeleteTournament(int id);
+    Task<TournamentView> GetTournament(int id);
 }
