@@ -35,6 +35,6 @@ It was built using .net 8 mininimal api's and blazor.
 - To Run Application you need to run the FlyballRaceDay.AppHost project
 - To auto create api client run this:
 ```
-nswag openapi2csclient /input:http://localhost:5458/swagger/v1/swagger.json /className:ApiServiceClient /namespace:FlyballRaceDay.Shared /output:ApServiceClient.cs /UseBaseUrl:false
+nswag openapi2csclient /input:http://localhost:5458/swagger/v1/swagger.json /className:ApiServiceClient /namespace:FlyballRaceDay.ApiClient /output:ApServiceClient.cs /UseBaseUrl:false
 ```
 
