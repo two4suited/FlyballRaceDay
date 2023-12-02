@@ -15,7 +15,7 @@
 #pragma warning disable 8603 // Disable "CS8603 Possible null reference return"
 #pragma warning disable 8604 // Disable "CS8604 Possible null reference argument for parameter"
 
-namespace FlyballRaceDay.Shared
+namespace FlyballRaceDay.ApiClient
 {
     using System = global::System;
 
@@ -48,7 +48,7 @@ namespace FlyballRaceDay.Shared
 
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<RaceView> RacePOSTAsync(RaceCreate body)
+        public virtual System.Threading.Tasks.Task RacePOSTAsync(RaceCreate body)
         {
             return RacePOSTAsync(body, System.Threading.CancellationToken.None);
         }
@@ -56,7 +56,7 @@ namespace FlyballRaceDay.Shared
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<RaceView> RacePOSTAsync(RaceCreate body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task RacePOSTAsync(RaceCreate body, System.Threading.CancellationToken cancellationToken)
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -75,7 +75,6 @@ namespace FlyballRaceDay.Shared
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -100,12 +99,7 @@ namespace FlyballRaceDay.Shared
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<RaceView>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
+                            return;
                         }
                         else
                         {
@@ -129,7 +123,7 @@ namespace FlyballRaceDay.Shared
 
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<RaceView>> ScheduleAsync(int tournamentId)
+        public virtual System.Threading.Tasks.Task ScheduleAsync(int tournamentId)
         {
             return ScheduleAsync(tournamentId, System.Threading.CancellationToken.None);
         }
@@ -137,7 +131,7 @@ namespace FlyballRaceDay.Shared
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<RaceView>> ScheduleAsync(int tournamentId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task ScheduleAsync(int tournamentId, System.Threading.CancellationToken cancellationToken)
         {
             if (tournamentId == null)
                 throw new System.ArgumentNullException("tournamentId");
@@ -153,7 +147,6 @@ namespace FlyballRaceDay.Shared
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -178,12 +171,7 @@ namespace FlyballRaceDay.Shared
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<RaceView>>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
+                            return;
                         }
                         else
                         {
@@ -207,7 +195,7 @@ namespace FlyballRaceDay.Shared
 
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<RaceView>> UpcomingAsync(int tournamentId)
+        public virtual System.Threading.Tasks.Task UpcomingAsync(int tournamentId)
         {
             return UpcomingAsync(tournamentId, System.Threading.CancellationToken.None);
         }
@@ -215,7 +203,7 @@ namespace FlyballRaceDay.Shared
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<RaceView>> UpcomingAsync(int tournamentId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task UpcomingAsync(int tournamentId, System.Threading.CancellationToken cancellationToken)
         {
             if (tournamentId == null)
                 throw new System.ArgumentNullException("tournamentId");
@@ -231,7 +219,6 @@ namespace FlyballRaceDay.Shared
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -256,12 +243,7 @@ namespace FlyballRaceDay.Shared
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<RaceView>>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
+                            return;
                         }
                         else
                         {
@@ -507,7 +489,7 @@ namespace FlyballRaceDay.Shared
 
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<RingView> RingPOSTAsync(RingCreate body)
+        public virtual System.Threading.Tasks.Task RingPOSTAsync(RingCreate body)
         {
             return RingPOSTAsync(body, System.Threading.CancellationToken.None);
         }
@@ -515,7 +497,7 @@ namespace FlyballRaceDay.Shared
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<RingView> RingPOSTAsync(RingCreate body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task RingPOSTAsync(RingCreate body, System.Threading.CancellationToken cancellationToken)
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -534,7 +516,6 @@ namespace FlyballRaceDay.Shared
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -559,12 +540,7 @@ namespace FlyballRaceDay.Shared
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<RingView>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
+                            return;
                         }
                         else
                         {
@@ -661,7 +637,7 @@ namespace FlyballRaceDay.Shared
 
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<RingView>> GetRingsAsync(int tournamentId)
+        public virtual System.Threading.Tasks.Task GetRingsAsync(int tournamentId)
         {
             return GetRingsAsync(tournamentId, System.Threading.CancellationToken.None);
         }
@@ -669,7 +645,7 @@ namespace FlyballRaceDay.Shared
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<RingView>> GetRingsAsync(int tournamentId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task GetRingsAsync(int tournamentId, System.Threading.CancellationToken cancellationToken)
         {
             if (tournamentId == null)
                 throw new System.ArgumentNullException("tournamentId");
@@ -685,7 +661,6 @@ namespace FlyballRaceDay.Shared
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -710,12 +685,7 @@ namespace FlyballRaceDay.Shared
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<RingView>>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
+                            return;
                         }
                         else
                         {
@@ -739,7 +709,7 @@ namespace FlyballRaceDay.Shared
 
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<RingView> RingPUTAsync(int id, RingCreate body)
+        public virtual System.Threading.Tasks.Task RingPUTAsync(int id, RingCreate body)
         {
             return RingPUTAsync(id, body, System.Threading.CancellationToken.None);
         }
@@ -747,7 +717,7 @@ namespace FlyballRaceDay.Shared
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<RingView> RingPUTAsync(int id, RingCreate body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task RingPUTAsync(int id, RingCreate body, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -770,7 +740,6 @@ namespace FlyballRaceDay.Shared
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
 
@@ -795,12 +764,7 @@ namespace FlyballRaceDay.Shared
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<RingView>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
+                            return;
                         }
                         else
                         {
@@ -822,17 +786,17 @@ namespace FlyballRaceDay.Shared
             }
         }
 
-        /// <returns>OK</returns>
+        /// <returns>Created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<TournamentView> TournamentPOSTAsync(TournamentCreate body)
+        public virtual System.Threading.Tasks.Task<TournamentView> TournamentCreateAsync(TournamentCreate body)
         {
-            return TournamentPOSTAsync(body, System.Threading.CancellationToken.None);
+            return TournamentCreateAsync(body, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>OK</returns>
+        /// <returns>Created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TournamentView> TournamentPOSTAsync(TournamentCreate body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<TournamentView> TournamentCreateAsync(TournamentCreate body, System.Threading.CancellationToken cancellationToken)
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -874,7 +838,7 @@ namespace FlyballRaceDay.Shared
                         ProcessResponse(client_, response_);
 
                         var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
+                        if (status_ == 201)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<TournamentView>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
@@ -905,15 +869,15 @@ namespace FlyballRaceDay.Shared
 
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TournamentView>> TournamentAllAsync()
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TournamentView>> TournamentGetActiveAsync()
         {
-            return TournamentAllAsync(System.Threading.CancellationToken.None);
+            return TournamentGetActiveAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TournamentView>> TournamentAllAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TournamentView>> TournamentGetActiveAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("tournament");
@@ -979,15 +943,15 @@ namespace FlyballRaceDay.Shared
 
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<TournamentView> TournamentGETAsync(int id)
+        public virtual System.Threading.Tasks.Task<TournamentView> TournamentGetByIdAsync(int id)
         {
-            return TournamentGETAsync(id, System.Threading.CancellationToken.None);
+            return TournamentGetByIdAsync(id, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TournamentView> TournamentGETAsync(int id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<TournamentView> TournamentGetByIdAsync(int id, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -1036,6 +1000,12 @@ namespace FlyballRaceDay.Shared
                             return objectResponse_.Object;
                         }
                         else
+                        if (status_ == 404)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Not Found", status_, responseText_, headers_, null);
+                        }
+                        else
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
@@ -1057,15 +1027,15 @@ namespace FlyballRaceDay.Shared
 
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<TournamentView> TournamentPUTAsync(int id, TournamentCreate body)
+        public virtual System.Threading.Tasks.Task<TournamentView> TournamentUpdateAsync(int id, TournamentCreate body)
         {
-            return TournamentPUTAsync(id, body, System.Threading.CancellationToken.None);
+            return TournamentUpdateAsync(id, body, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TournamentView> TournamentPUTAsync(int id, TournamentCreate body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<TournamentView> TournamentUpdateAsync(int id, TournamentCreate body, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -1121,6 +1091,12 @@ namespace FlyballRaceDay.Shared
                             return objectResponse_.Object;
                         }
                         else
+                        if (status_ == 404)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Not Found", status_, responseText_, headers_, null);
+                        }
+                        else
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
@@ -1142,15 +1118,15 @@ namespace FlyballRaceDay.Shared
 
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task TournamentDELETEAsync(int id)
+        public virtual System.Threading.Tasks.Task TournamentDeleteAsync(int id)
         {
-            return TournamentDELETEAsync(id, System.Threading.CancellationToken.None);
+            return TournamentDeleteAsync(id, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task TournamentDELETEAsync(int id, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task TournamentDeleteAsync(int id, System.Threading.CancellationToken cancellationToken)
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -1188,6 +1164,12 @@ namespace FlyballRaceDay.Shared
                         ProcessResponse(client_, response_);
 
                         var status_ = (int)response_.StatusCode;
+                        if (status_ == 404)
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Not Found", status_, responseText_, headers_, null);
+                        }
+                        else
                         if (status_ == 200)
                         {
                             return;
@@ -1354,62 +1336,7 @@ namespace FlyballRaceDay.Shared
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class RaceView
-    {
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Id { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("tournamentId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int TournamentId { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("raceNumber", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int RaceNumber { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("leftLaneTeam", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LeftLaneTeam { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("rightLaneTeam", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string RightLaneTeam { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("format", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Format { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("division", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Division { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("breakout", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Breakout { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("ringId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int RingId { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("done", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool Done { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("isBreak", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool IsBreak { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("breakTimeInMinutes", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int BreakTimeInMinutes { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class RingCreate
-    {
-        [Newtonsoft.Json.JsonProperty("tournamentId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int TournamentId { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("color", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Color { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class RingView
     {
         [Newtonsoft.Json.JsonProperty("tournamentId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int TournamentId { get; set; }

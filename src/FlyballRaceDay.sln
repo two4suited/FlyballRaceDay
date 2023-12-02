@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aspire", "Aspire", "{5F0B19
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{712B7FBF-1D58-401F-80B0-E931AEC41A26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyballRaceDay.ApiClient", "FlyballRaceDay.ApiClient\FlyballRaceDay.ApiClient.csproj", "{4761BED8-91EE-4052-8C16-122301273005}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{29F1C609-4A4C-4729-8F5A-DAFD8DA9BFEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29F1C609-4A4C-4729-8F5A-DAFD8DA9BFEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29F1C609-4A4C-4729-8F5A-DAFD8DA9BFEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4761BED8-91EE-4052-8C16-122301273005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4761BED8-91EE-4052-8C16-122301273005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4761BED8-91EE-4052-8C16-122301273005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4761BED8-91EE-4052-8C16-122301273005}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

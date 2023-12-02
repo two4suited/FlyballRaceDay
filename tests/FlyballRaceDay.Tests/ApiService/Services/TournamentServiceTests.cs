@@ -1,4 +1,6 @@
 using FlyballRaceDay.ApiService.Tournament;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Shouldly;
 using Testcontainers.PostgreSql;
 
@@ -21,9 +23,11 @@ public class TournamentServiceTests(IntegrationTestFixture fixture) : IClassFixt
         await dbContext.SaveChangesAsync();
         
         var sut = new TournamentService(dbContext, TimeProvider.System, fixture.Logger);
-        var tournaments = await sut.GetActiveTournaments();
+        var result = await sut.GetActiveTournaments();
         
-        tournaments.Count.ShouldBe(1);
+        var okResult = (Ok<List<TournamentView>>)result;
+        
+        okResult.Value.Count.ShouldBe(1);
     }
 
     [Fact]

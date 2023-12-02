@@ -20,6 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\FlyballRaceDay.ApiClient\FlyballRaceDay.ApiClient.csproj" />
       <ProjectReference Include="..\FlyballRaceDay.Shared\FlyballRaceDay.Shared.csproj" />
     </ItemGroup>
 

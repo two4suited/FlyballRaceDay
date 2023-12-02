@@ -1,3 +1,4 @@
+using FlyballRaceDay.ApiClient;
 using FlyballRaceDay.Shared;
 using FlyballRaceDay.Web;
 using FlyballRaceDay.Web.Client.Pages;

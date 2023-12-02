@@ -1,3 +1,6 @@
+using FlyballRaceDay.ApiClient;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace FlyballRaceDay.Tests.ApiService.HttpTests;
 
 public class ApiServiceWebApplicationFactory<TProgram,TDbContext> : WebApplicationFactory<TProgram>,IAsyncLifetime where TProgram :class where TDbContext : DbContext
@@ -8,6 +11,7 @@ public class ApiServiceWebApplicationFactory<TProgram,TDbContext> : WebApplicati
     {
         _container = new PostgreSqlBuilder().WithDatabase(Guid.NewGuid().ToString()).Build();
     }
+    
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {

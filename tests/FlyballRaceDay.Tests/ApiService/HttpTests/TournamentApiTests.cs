@@ -1,8 +1,6 @@
-using System.Net.Http.Json;
-using FlyballRaceDay.Shared;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using FlyballRaceDay.ApiClient;
+using Microsoft.AspNetCore.Http;
 using Shouldly;
-using Xunit.Abstractions;
 
 namespace FlyballRaceDay.Tests.ApiService.HttpTests;
 
@@ -33,16 +31,16 @@ public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballR
         using var client = factory.CreateClient();
         var apiClient = new ApiServiceClient(client);
 
-        var newTournament = new FlyballRaceDay.Shared.TournamentCreate()
+        var newTournament = new TournamentCreate()
         {
             EventName = "test",
             EndDate = DateTimeOffset.Now,
             StartDate = DateTimeOffset.Now,
             NumberOfRings = 2
         };
-        await apiClient.TournamentPOSTAsync(newTournament, new CancellationToken());
+        await apiClient.TournamentCreateAsync(newTournament, new CancellationToken());
 
-        var tournaments = await apiClient.TournamentAllAsync();
+        var tournaments = await apiClient.TournamentGetActiveAsync();
         
         tournaments.Count.ShouldBe(1);
     }
@@ -53,20 +51,28 @@ public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballR
         using var client = factory.CreateClient();
         var apiClient = new ApiServiceClient(client);
 
-        var newTournament = new FlyballRaceDay.Shared.TournamentCreate()
+        var newTournament = new TournamentCreate()
         {
             EventName = "test",
             EndDate = DateTimeOffset.Now,
             StartDate = DateTimeOffset.Now,
             NumberOfRings = 2
         };
-        var newTournamentResponse = await apiClient.TournamentPOSTAsync(newTournament, new CancellationToken());
+        var newTournamentResponse = await apiClient.TournamentCreateAsync(newTournament, new CancellationToken());
 
-        await apiClient.TournamentDELETEAsync(newTournamentResponse.Id);
+        await apiClient.TournamentDeleteAsync(newTournamentResponse.Id);
 
-        var blankTournament = await apiClient.TournamentGETAsync(newTournamentResponse.Id);
+        var statusCode = 200;
         
-        blankTournament.ShouldBeNull();
+        try
+        {
+            await  apiClient.TournamentGetByIdAsync(newTournamentResponse.Id);
+        }
+        catch (ApiException e)
+        {
+            statusCode = e.StatusCode;
+        }
+        statusCode.ShouldBe(StatusCodes.Status404NotFound);
     }
 
     [Fact]
@@ -75,7 +81,7 @@ public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballR
         using var client = factory.CreateClient();
         var apiClient = new ApiServiceClient(client);
 
-        var tournaments = await apiClient.TournamentAllAsync();
+        var tournaments = await apiClient.TournamentGetActiveAsync();
         var tournament = tournaments.First();
 
         var tournamentCreate = new TournamentCreate()
@@ -86,7 +92,7 @@ public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballR
             NumberOfRings = tournament.NumberOfRings
         };
 
-        var updatedTournament = await apiClient.TournamentPUTAsync(tournament.Id,tournamentCreate);
+        var updatedTournament = await apiClient.TournamentUpdateAsync(tournament.Id,tournamentCreate);
         
         updatedTournament.EventName.ShouldBe("Updated");
 
