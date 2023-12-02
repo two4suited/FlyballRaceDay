@@ -8,6 +8,7 @@ It was built using .net 8 mininimal api's and blazor.
 - FlyballRaceDay.AppHost - Aspire Project for local development
 - FlyballRaceDay.ServiceDefaults - Service Collection Defaults for project for middleware
 - FlyballRaceDay.Shared - Models and API Service Client that is shared between Server and Client Blazor Projects
+- FlyballRaceDay.ApiClient - Holds Auto Generated Api Client
 - FlyballRaceDay.Web - Blazor Server Project
 - FlyballRaceDay.Web.Client - Blazor Wasm Project
 - FlyballRaceDay.Web.Shared - Razor Component Library
