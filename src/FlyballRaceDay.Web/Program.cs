@@ -1,8 +1,8 @@
-using FlyballRaceDay.ApiClient;
+using FlyballRace.APIClient;
 using FlyballRaceDay.Shared;
-using FlyballRaceDay.Web;
 using FlyballRaceDay.Web.Client.Pages;
 using FlyballRaceDay.Web.Components;
+using Refit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +15,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddHttpClient<ApiServiceClient>(client=> client.BaseAddress = new($"http://{ServicesLocator.ApiApplication}"));
+builder.Services.AddRefitClient<IFlyballRaceDayApiService>().ConfigureHttpClient(client=> client.BaseAddress = new($"http://{ServicesLocator.ApiApplication}"));
 
 var app = builder.Build();
 

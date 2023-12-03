@@ -18,7 +18,7 @@ It was built using .net 8 mininimal api's and blazor.
 
 - [Aspire](https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview)
 - [Blazor](https://learn.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-8.0)
-- [NSwag](https://github.com/RicoSuter/NSwag/wiki/CommandLine)
+- [Refitter](https://github.com/christianhelle/refitter)
 
 ## Packages 
 
@@ -36,6 +36,6 @@ It was built using .net 8 mininimal api's and blazor.
 - To Run Application you need to run the FlyballRaceDay.AppHost project
 - To auto create api client run this:
 ```
-nswag openapi2csclient /input:http://localhost:5458/swagger/v1/swagger.json /className:ApiServiceClient /namespace:FlyballRaceDay.ApiClient /output:ApServiceClient.cs /UseBaseUrl:false
+ refitter http://localhost:5458/swagger/v1/swagger.json --namespace FlyballRace.APIClient -o APIServiceClient.cs --use-api-response
 ```
 

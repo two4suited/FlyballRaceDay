@@ -1,7 +1,7 @@
 @using Microsoft.AspNetCore.Components.QuickGrid
-@using FlyballRaceDay.ApiClient
+@using FlyballRace.APIClient
 @rendermode InteractiveServer
-@inject ApiServiceClient client
+@inject IFlyballRaceDayApiService client
 
 <h3>UpcomingTournaments</h3>
 
@@ -17,7 +17,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var response = await client.TournamentGetActiveAsync();
+        var response = (await client.TournamentGetActive()).Content;
         tournaments = response.AsQueryable();
     }
 }

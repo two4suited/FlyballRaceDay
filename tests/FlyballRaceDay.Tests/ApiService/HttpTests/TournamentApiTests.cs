@@ -1,5 +1,6 @@
-using FlyballRaceDay.ApiClient;
-using Microsoft.AspNetCore.Http;
+using System.Net;
+using FlyballRace.APIClient;
+using Refit;
 using Shouldly;
 
 namespace FlyballRaceDay.Tests.ApiService.HttpTests;
@@ -29,8 +30,8 @@ public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballR
     public async Task Create_SameDayTournamentShouldReturnOnGet()
     {
         using var client = factory.CreateClient();
-        var apiClient = new ApiServiceClient(client);
-
+        var apiClient = RestService.For<IFlyballRaceDayApiService>(client);
+   
         var newTournament = new TournamentCreate()
         {
             EventName = "test",
@@ -38,18 +39,19 @@ public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballR
             StartDate = DateTimeOffset.Now,
             NumberOfRings = 2
         };
-        await apiClient.TournamentCreateAsync(newTournament, new CancellationToken());
+        await apiClient.TournamentCreate(newTournament);
 
-        var tournaments = await apiClient.TournamentGetActiveAsync();
+        var response = await apiClient.TournamentGetActive();
         
-        tournaments.Count.ShouldBe(1);
+        response.StatusCode.ShouldBe(HttpStatusCode.OK);
+        response.Content?.Count.ShouldBe(1);
     }
     
     [Fact]
     public async Task Delete_ShouldRemoveTournament()
     {
         using var client = factory.CreateClient();
-        var apiClient = new ApiServiceClient(client);
+        var apiClient = RestService.For<IFlyballRaceDayApiService>(client);
 
         var newTournament = new TournamentCreate()
         {
@@ -58,31 +60,26 @@ public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballR
             StartDate = DateTimeOffset.Now,
             NumberOfRings = 2
         };
-        var newTournamentResponse = await apiClient.TournamentCreateAsync(newTournament, new CancellationToken());
-
-        await apiClient.TournamentDeleteAsync(newTournamentResponse.Id);
-
-        var statusCode = 200;
+        var createResponse = await apiClient.TournamentCreate(newTournament);
+        createResponse.StatusCode.ShouldBe(HttpStatusCode.Created);
+        var newTournamentResponse = createResponse.Content;
         
-        try
-        {
-            await  apiClient.TournamentGetByIdAsync(newTournamentResponse.Id);
-        }
-        catch (ApiException e)
-        {
-            statusCode = e.StatusCode;
-        }
-        statusCode.ShouldBe(StatusCodes.Status404NotFound);
+        await apiClient.TournamentDelete(newTournamentResponse!.Id);
+
+        var getResponse = await apiClient.TournamentGetById(newTournamentResponse.Id);
+        getResponse.StatusCode.ShouldBe(HttpStatusCode.NotFound);
     }
 
     [Fact]
     public async Task Update_ChangeEventNameReturnsNewEventName()
     {
         using var client = factory.CreateClient();
-        var apiClient = new ApiServiceClient(client);
+        var apiClient = RestService.For<IFlyballRaceDayApiService>(client);
 
-        var tournaments = await apiClient.TournamentGetActiveAsync();
-        var tournament = tournaments.First();
+        var getResponse = await apiClient.TournamentGetActive();
+        getResponse.StatusCode.ShouldBe(HttpStatusCode.OK);
+        
+        var tournament = getResponse.Content!.First();
 
         var tournamentCreate = new TournamentCreate()
         {
@@ -92,9 +89,10 @@ public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballR
             NumberOfRings = tournament.NumberOfRings
         };
 
-        var updatedTournament = await apiClient.TournamentUpdateAsync(tournament.Id,tournamentCreate);
+        var updateResponse = await apiClient.TournamentUpdate(tournament.Id,tournamentCreate);
+        var updatedTournament = updateResponse.Content;
         
-        updatedTournament.EventName.ShouldBe("Updated");
+        updatedTournament!.EventName.ShouldBe("Updated");
 
     }
 }

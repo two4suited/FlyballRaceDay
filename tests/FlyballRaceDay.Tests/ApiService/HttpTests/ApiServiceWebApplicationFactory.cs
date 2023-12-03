@@ -1,5 +1,3 @@
-using FlyballRaceDay.ApiClient;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace FlyballRaceDay.Tests.ApiService.HttpTests;
 
