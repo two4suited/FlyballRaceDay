@@ -1,5 +1,5 @@
-@using FlyballRaceDay.ApiClient
-@inject ApiServiceClient client
+@using FlyballRace.APIClient
+@inject IFlyballRaceDayApiService client
 @inject ILogger<CreateTournament> logger
 
 
@@ -45,8 +45,8 @@
     private async Task Submit()
     {
         logger.LogInformation(JsonSerializer.Serialize(Model));
-        //var response = await client.TournamentPOSTAsync(Model);
-        //logger.LogInformation(JsonSerializer.Serialize(response));
+        var response = await client.TournamentCreate(Model);
+        logger.LogInformation(JsonSerializer.Serialize(response));
     }
     
     
