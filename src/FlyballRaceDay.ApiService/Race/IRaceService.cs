@@ -4,9 +4,9 @@ public interface IRaceService
 {
     Task<IResult> CreateRace(RaceCreate newRace);
     Task<IResult> CreateSchedule(string schedule);
-    Task<IResult> GetScheduleByTournamentId(int tournamentId);
-    Task<IResult> DeleteRace(int raceId);
-    Task<IResult> GetUpcomingRaces(int tournamentId);
-    Task<IResult> MarkRaceAsDone(int raceId);
-    Task<IResult> AddRaceToRing(int raceId, int ringId);
+    Task<IResult> GetScheduleByTournamentId(string tournamentId);
+    Task<IResult> DeleteRace(string raceId);
+    Task<IResult> GetUpcomingRaces(string tournamentId);
+    Task<IResult> MarkRaceAsDone(string raceId);
+    Task<IResult> AddRaceToRing(string raceId, string ringId);
 }

@@ -2,7 +2,7 @@ namespace FlyballRaceDay.ApiService.Race;
 
 public class RaceView
 {
-    public int Id { get; set; }
+    public string Id { get; set; }
     public int TournamentId { get; set; }
     public int RaceNumber { get; set; }
     public string LeftLaneTeam { get; set; }

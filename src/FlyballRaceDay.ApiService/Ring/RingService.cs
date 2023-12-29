@@ -9,17 +9,17 @@ public class RingService(FlyballRaceDayDbContext context,ILoggerFactory loggerFa
         return await Create(ring);
     }
 
-    public async Task<IResult> DeleteRing(int ringId)
+    public async Task<IResult> DeleteRing(string ringId)
     {
        return await Delete(ringId);
     }
 
-    public async Task<IResult> GetRingByTournamentId(int tournamentId)
+    public async Task<IResult> GetRingByTournamentId(string tournamentId)
     {
-        return await Where(x => x.TournamentId == tournamentId);
+        return await Where(x => x.TournamentId == new Guid(tournamentId));
     }
 
-    public async Task<IResult> UpdateRing(RingCreate ring, int id)
+    public async Task<IResult> UpdateRing(RingCreate ring, string id)
     {
         return await Update(ring, id);
     }

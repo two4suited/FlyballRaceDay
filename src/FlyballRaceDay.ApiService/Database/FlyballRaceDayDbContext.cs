@@ -1,32 +1,37 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MongoDB.Driver;
+using MongoDB.EntityFrameworkCore.Extensions;
 
 namespace FlyballRaceDay.ApiService.Database;
 
 public class FlyballRaceDayDbContext : DbContext
 {
-    public FlyballRaceDayDbContext(DbContextOptions<FlyballRaceDayDbContext> options) : base(options)
+    
+    public static FlyballRaceDayDbContext Create(IMongoDatabase database) =>
+        new(new DbContextOptionsBuilder<FlyballRaceDayDbContext>()
+            .UseMongoDB(database.Client, database.DatabaseNamespace.DatabaseName)
+            .Options);
+
+    public FlyballRaceDayDbContext(DbContextOptions options)
+        : base(options)
     {
-        Database.EnsureCreated();
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Tournament>().ToCollection("tournaments");
+        modelBuilder.Entity<Race>().ToCollection("races");
+        modelBuilder.Entity<Ring>().ToCollection("rings");
+    }
+   
 
     public DbSet<Tournament> Tournaments => Set<Tournament>();
     public DbSet<Race> Races => Set<Race>();
     public DbSet<Ring> Rings => Set<Ring>();
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        DefineTournament(modelBuilder.Entity<Tournament>());
-    }
-
-    private static void DefineTournament(EntityTypeBuilder<Tournament> builder)
-    {
-        builder.ToTable(nameof(Tournament));
-        builder.HasKey(k => k.Id);
-        builder.Property(cb => cb.Id)
-            .UseHiLo("catalog_type_hilo")
-            .IsRequired();
-    }
+  
 
    
 }

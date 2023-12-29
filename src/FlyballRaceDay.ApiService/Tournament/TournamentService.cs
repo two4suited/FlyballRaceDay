@@ -13,17 +13,17 @@ public class TournamentService(FlyballRaceDayDbContext context,TimeProvider time
     {
         return await Where(x => x.StartDate >= DateOnly.FromDateTime(timeProvider.GetLocalNow().DateTime));
     }
-    public async Task<IResult> UpdateTournament(TournamentCreate tournamentCreate, int id)
+    public async Task<IResult> UpdateTournament(TournamentCreate tournamentCreate, string id)
     {
         return await Update(tournamentCreate, id);
     }
 
-    public async Task<IResult> DeleteTournament(int id)
+    public async Task<IResult> DeleteTournament(string id)
     {
        return await Delete(id);
     }
 
-    public async Task<IResult> GetTournament(int id)
+    public async Task<IResult> GetTournament(string id)
     {
         return await GetById(id);
     }

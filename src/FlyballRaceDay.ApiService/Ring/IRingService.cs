@@ -3,7 +3,7 @@ namespace FlyballRaceDay.ApiService.Ring;
 public interface IRingService
 {
     Task<IResult> CreateRing(RingCreate ring);
-    Task<IResult> DeleteRing(int ringId);
-    Task<IResult> GetRingByTournamentId(int tournamentId);
-    Task<IResult> UpdateRing(RingCreate ring, int id);
+    Task<IResult> DeleteRing(string ringId);
+    Task<IResult> GetRingByTournamentId(string tournamentId);
+    Task<IResult> UpdateRing(RingCreate ring, string id);
 }

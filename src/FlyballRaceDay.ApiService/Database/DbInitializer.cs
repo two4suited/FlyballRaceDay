@@ -10,15 +10,16 @@ internal class DbInitializer
         dbContext.Database.EnsureCreated();
         var random = new Random();
         var numberOfTournaments = random.Next(3, 10);;
-        var ringId = 1;
-        var raceId = 1;
+        var ringId = Guid.NewGuid();
+        var raceId = Guid.NewGuid();
         for (var i = 1; i <= numberOfTournaments; i++)
         {
             var numberOfRings = random.Next(1, 4);
+            var tourneyId = Guid.NewGuid();
              
             dbContext.Tournaments.Add(new Tournament()
             {
-                Id = i,
+                Id = tourneyId,
                 EndDate = DateOnly.FromDateTime(DateTime.Now.AddDays(i)),
                 StartDate = DateOnly.FromDateTime(DateTime.Now.AddDays(i)),
                 EventName = $"Tournament Number {i}",
@@ -29,12 +30,11 @@ internal class DbInitializer
             {
                 dbContext.Rings.Add(new Ring()
                 {
-                    Id = ringId,
-                    TournamentId = i,
+                    Id = Guid.NewGuid(),
+                    TournamentId = tourneyId,
                     Color = "Blue",
                     Name = "Blue Ring"
                 });
-                ringId++;
             }
             
             var numberOfRaces = random.Next(40, 100);
@@ -50,19 +50,18 @@ internal class DbInitializer
 
                 dbContext.Races.Add(new Race()
                 {
-                    Id = raceId,
+                    Id = Guid.NewGuid(),
                     Breakout = "20.0",
                     Division = "Regular 1",
                     BreakTimeInMinutes = minutes,
                     IsBreak = isBreak,
                     RaceNumber = r,
-                    TournamentId = i,
+                    TournamentId = tourneyId,
                     Done = false,
                     Format = "4 of 4",
                     LeftLaneTeam = "Bar",
                     RightLaneTeam = "Foo"
                 });
-                raceId++;
             }
 
         }

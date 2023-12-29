@@ -6,13 +6,13 @@ public static class RaceApi
     {
         group.MapPost("/", (RaceCreate race, IRaceService service) => service.CreateRace(race));
         group.MapGet("/schedule/{tournamentId}",
-            (int tournamentId, IRaceService service) => service.GetScheduleByTournamentId(tournamentId));
+            (string tournamentId, IRaceService service) => service.GetScheduleByTournamentId(tournamentId));
         group.MapGet("/upcoming/{tournamentId}",
-            (int tournamentId, IRaceService service) => service.GetUpcomingRaces(tournamentId));
-        group.MapPut("{raceId}/done", (int raceId, IRaceService service) => service.MarkRaceAsDone(raceId));
-        group.MapDelete("/{raceId}", (int raceId, IRaceService service) => service.DeleteRace(raceId));
+            (string tournamentId, IRaceService service) => service.GetUpcomingRaces(tournamentId));
+        group.MapPut("{raceId}/done", (string raceId, IRaceService service) => service.MarkRaceAsDone(raceId));
+        group.MapDelete("/{raceId}", (string raceId, IRaceService service) => service.DeleteRace(raceId));
         group.MapPut("/{raceId}/{ringId}",
-            (int raceId, int ringId, IRaceService service) => service.AddRaceToRing(raceId, ringId));
+            (string raceId, string ringId, IRaceService service) => service.AddRaceToRing(raceId, ringId));
         return group;
     }
 }

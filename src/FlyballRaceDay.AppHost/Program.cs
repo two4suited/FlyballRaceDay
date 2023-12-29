@@ -3,11 +3,11 @@ using FlyballRaceDay.Shared;
 var builder = DistributedApplication.CreateBuilder(args);
 
 var cache = builder.AddRedisContainer(ServicesLocator.RedisCache);
-var postgresdb = builder.AddPostgresContainer(ServicesLocator.DatabaseContainer)
-    .AddDatabase(ServicesLocator.Database);
+
+var mongodb = builder.AddMongoDBContainer(ServicesLocator.DatabaseContainer).AddDatabase(ServicesLocator.Database);
 
 var apiservice = builder.AddProject<Projects.FlyballRaceDay_ApiService>(ServicesLocator.ApiApplication)
-    .WithReference(postgresdb);
+    .WithReference(mongodb);
 
 builder.AddProject<Projects.FlyballRaceDay_Web>(ServicesLocator.WebApplication)
     .WithReference(apiservice)

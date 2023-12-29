@@ -9,6 +9,7 @@ public abstract class DataService<TData,TCreate,TView>(ILoggerFactory loggerFact
     protected async Task<IResult> Create(TCreate create)
     {
         var newDataRecord = Mapper.Map<TCreate,TData>(create);
+        newDataRecord.Id = Guid.NewGuid();
         var dataRecord = context.Set<TData>().Add(newDataRecord);
         await context.SaveChangesAsync();
         return Results.Created("Item Created",Mapper.Map<TData, TView>(dataRecord.Entity));
@@ -20,22 +21,22 @@ public abstract class DataService<TData,TCreate,TView>(ILoggerFactory loggerFact
         return Results.Ok(queryResults.MapList(Mapper.Map<TData, TView>));
     }
 
-    protected async Task<IResult> GetById(int id)
+    protected async Task<IResult> GetById(string id)
     {
         var objectReturn = await context.Set<TData>().FindAsync(id);
         return objectReturn != null ? Results.Ok(Mapper.Map<TData, TView>(objectReturn)) : Results.NotFound(); 
     }
     
-    protected async Task<IResult> Update(TCreate create, int id)
+    protected async Task<IResult> Update(TCreate create, string id)
     {
         var objectToUpdate = Mapper.Map<TCreate,TData>(create);
-        objectToUpdate.Id = id;
+        objectToUpdate.Id = new Guid(id);
         context.Update(objectToUpdate);
         await context.SaveChangesAsync();
         return Results.Ok(Mapper.Map<TData, TView>(objectToUpdate));
     }
 
-    protected async Task<IResult> Delete(int id)
+    protected async Task<IResult> Delete(string id)
     {
         if (await context.Set<TData>().FindAsync(id) is not { } objectToDelete) return Results.NotFound();
         context.Remove(objectToDelete);
