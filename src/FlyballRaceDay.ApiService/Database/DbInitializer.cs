@@ -20,8 +20,8 @@ internal class DbInitializer
             dbContext.Tournaments.Add(new Tournament()
             {
                 Id = tourneyId,
-                EndDate = DateOnly.FromDateTime(DateTime.Now.AddDays(i)),
-                StartDate = DateOnly.FromDateTime(DateTime.Now.AddDays(i)),
+                EndDate = DateTime.Now.AddDays(i),
+                StartDate = DateTime.Now.AddDays(i),
                 EventName = $"Tournament Number {i}",
                 NumberOfRings = numberOfRings
             });

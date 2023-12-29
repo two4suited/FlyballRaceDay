@@ -1,9 +1,3 @@
-using FlyballRaceDay.ApiService.Tournament;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using Shouldly;
-using Testcontainers.PostgreSql;
-
 namespace FlyballRaceDay.Tests.ApiService;
 
 [CollectionDefinition("IntegrationTests collection")]
@@ -16,13 +10,15 @@ public class TournamentServiceTests(IntegrationTestFixture fixture) : IClassFixt
         var dbContext = provider.CreateDbContext();
 
         var currentDayTournament = fixture.TournamentGenerator.Generate();
-        currentDayTournament.EndDate = DateOnly.FromDateTime(DateTime.Now);
-        currentDayTournament.StartDate = DateOnly.FromDateTime(DateTime.Now);
+        currentDayTournament.EndDate = DateTime.Now;
+        currentDayTournament.StartDate = DateTime.Now;
 
         dbContext.Tournaments.Add(currentDayTournament);
         await dbContext.SaveChangesAsync();
+
+        var timeProvider = TimeProvider.System;
         
-        var sut = new TournamentService(dbContext, TimeProvider.System, fixture.Logger);
+        var sut = new TournamentService(dbContext, timeProvider, fixture.Logger);
         var result = await sut.GetActiveTournaments();
         
         var okResult = (Ok<List<TournamentView>>)result;

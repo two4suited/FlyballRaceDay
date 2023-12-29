@@ -10,7 +10,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-preview.1.23557.2" />
         <PackageReference Include="Bogus" Version="35.0.1" />
         <PackageReference Include="GitHubActionsTestLogger" Version="2.3.3">
           <PrivateAssets>all</PrivateAssets>
@@ -18,10 +17,12 @@
         </PackageReference>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+        <PackageReference Include="MongoDB.Driver" Version="2.23.1" />
+        <PackageReference Include="MongoDB.EntityFrameworkCore" Version="7.0.0-preview.1" />
         <PackageReference Include="NSubstitute" Version="5.1.0" />
         <PackageReference Include="Shouldly" Version="4.2.1" />
         <PackageReference Include="Testcontainers" Version="3.6.0" />
-        <PackageReference Include="Testcontainers.PostgreSql" Version="3.6.0" />
+        <PackageReference Include="Testcontainers.MongoDb" Version="3.6.0" />
         <PackageReference Include="xunit" Version="2.6.3" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.5.5">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

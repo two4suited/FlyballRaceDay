@@ -1,7 +1,7 @@
 using System.Net;
 using FlyballRace.APIClient;
 using Refit;
-using Shouldly;
+using TournamentCreate = FlyballRace.APIClient.TournamentCreate;
 
 namespace FlyballRaceDay.Tests.ApiService.HttpTests;
 

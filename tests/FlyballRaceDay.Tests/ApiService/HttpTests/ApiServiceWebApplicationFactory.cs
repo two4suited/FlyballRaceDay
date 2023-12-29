@@ -1,13 +1,15 @@
 
+using Testcontainers.MongoDb;
+
 namespace FlyballRaceDay.Tests.ApiService.HttpTests;
 
 public class ApiServiceWebApplicationFactory<TProgram,TDbContext> : WebApplicationFactory<TProgram>,IAsyncLifetime where TProgram :class where TDbContext : DbContext
 {
-    public PostgreSqlContainer? _container { get; set; }
+    private MongoDbContainer _container  { get; set; }
 
     public ApiServiceWebApplicationFactory()
     {
-        _container = new PostgreSqlBuilder().WithDatabase(Guid.NewGuid().ToString()).Build();
+        _container = new MongoDbBuilder().Build();
     }
     
 

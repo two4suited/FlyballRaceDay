@@ -1,16 +1,16 @@
-using FlyballRaceDay.ApiService.Tournament;
+using Testcontainers.MongoDb;
 
 namespace FlyballRaceDay.Tests.ApiService;
 
 public class IntegrationTestFixture : IAsyncLifetime
 {
-    public PostgreSqlContainer? _databaseTestContainer { get; set; }
+    public MongoDbContainer? _databaseTestContainer { get; set; }
     public ILoggerFactory Logger { get; set; }
     
     public Faker<Tournament> TournamentGenerator = new Faker<Tournament>()
-        .RuleFor(x => x.StartDate, DateOnly.FromDateTime(DateTime.Now))
+        .RuleFor(x => x.StartDate, DateTime.Now)
         .RuleFor(x => x.EventName, faker => faker.Lorem.Sentence())
-        .RuleFor(x => x.EndDate, DateOnly.FromDateTime(DateTime.Now))
+        .RuleFor(x => x.EndDate, DateTime.Now)
         .RuleFor(x => x.NumberOfRings, faker => faker.Random.Number(1,10));
     
     public Faker<TournamentCreate> TournamentCreateGenerator = new Faker<TournamentCreate>()
@@ -21,7 +21,7 @@ public class IntegrationTestFixture : IAsyncLifetime
     
     public async Task InitializeAsync()
     {
-        _databaseTestContainer = new PostgreSqlBuilder().Build();
+        _databaseTestContainer = new MongoDbBuilder().Build();
         await _databaseTestContainer.StartAsync();
         Logger = Logger = Substitute.For<ILoggerFactory>();
     }

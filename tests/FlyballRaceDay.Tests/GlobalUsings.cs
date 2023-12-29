@@ -1,10 +1,13 @@
 global using Bogus;
 global using FlyballRaceDay.ApiService.Database;
+global using FlyballRaceDay.ApiService.Tournament;
 global using Microsoft.AspNetCore.Hosting;
+global using Microsoft.AspNetCore.Http.HttpResults;
 global using Microsoft.AspNetCore.Mvc.Testing;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.Logging;
 global using NSubstitute;
-global using Testcontainers.PostgreSql;
+global using Shouldly;
+global using Testcontainers.MongoDb;
 global using Xunit;
