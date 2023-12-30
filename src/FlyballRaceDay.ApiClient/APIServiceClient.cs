@@ -13,35 +13,39 @@ namespace FlyballRace.APIClient
     [System.CodeDom.Compiler.GeneratedCode("Refitter", "0.8.5.0")]
     public partial interface IFlyballRaceDayApiService
     {
+        [Headers("Accept: text/plain")]
+        [Get("/test")]
+        Task<IApiResponse<string>> Test();
+
         [Post("/race")]
         Task RacePOST([Body] RaceCreate body);
 
         [Get("/race/schedule/{tournamentId}")]
-        Task Schedule(int tournamentId);
+        Task Schedule(string tournamentId);
 
         [Get("/race/upcoming/{tournamentId}")]
-        Task Upcoming(int tournamentId);
+        Task Upcoming(string tournamentId);
 
         [Put("/race/{raceId}/done")]
-        Task Done(int raceId);
+        Task Done(string raceId);
 
         [Delete("/race/{raceId}")]
-        Task RaceDELETE(int raceId);
+        Task RaceDELETE(string raceId);
 
         [Put("/race/{raceId}/{ringId}")]
-        Task RacePUT(int raceId, int ringId);
+        Task RacePUT(string raceId, string ringId);
 
         [Post("/ring")]
         Task RingPOST([Body] RingCreate body);
 
         [Delete("/ring")]
-        Task RingDELETE([Query] int id);
+        Task RingDELETE([Query] string id);
 
         [Get("/ring/{tournamentId}/GetRings")]
-        Task GetRings(int tournamentId);
+        Task GetRings(string tournamentId);
 
         [Put("/ring/{id}")]
-        Task RingPUT(int id, [Body] RingCreate body);
+        Task RingPUT(string id, [Body] RingCreate body);
 
         [Headers("Accept: application/json")]
         [Post("/tournament")]
@@ -53,14 +57,14 @@ namespace FlyballRace.APIClient
 
         [Headers("Accept: application/json")]
         [Get("/tournament/{id}")]
-        Task<IApiResponse<TournamentView>> TournamentGetById(int id);
+        Task<IApiResponse<TournamentView>> TournamentGetById(string id);
 
         [Headers("Accept: application/json")]
         [Put("/tournament/{id}")]
-        Task<IApiResponse<TournamentView>> TournamentUpdate(int id, [Body] TournamentCreate body);
+        Task<IApiResponse<TournamentView>> TournamentUpdate(string id, [Body] TournamentCreate body);
 
         [Delete("/tournament/{id}")]
-        Task TournamentDelete(int id);
+        Task TournamentDelete(string id);
 
 
     }
@@ -184,13 +188,11 @@ namespace FlyballRace.APIClient
         [JsonPropertyName("startDate")]
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]   
-        [JsonConverter(typeof(DateFormatConverter))]
         public System.DateTimeOffset StartDate { get; set; }
 
         [JsonPropertyName("endDate")]
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]   
-        [JsonConverter(typeof(DateFormatConverter))]
         public System.DateTimeOffset EndDate { get; set; }
 
         [JsonPropertyName("numberOfRings")]
@@ -207,7 +209,7 @@ namespace FlyballRace.APIClient
         [JsonPropertyName("id")]
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]   
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [JsonPropertyName("eventName")]
 
@@ -217,13 +219,11 @@ namespace FlyballRace.APIClient
         [JsonPropertyName("startDate")]
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]   
-        [JsonConverter(typeof(DateFormatConverter))]
         public System.DateTimeOffset StartDate { get; set; }
 
         [JsonPropertyName("endDate")]
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]   
-        [JsonConverter(typeof(DateFormatConverter))]
         public System.DateTimeOffset EndDate { get; set; }
 
         [JsonPropertyName("numberOfRings")]
@@ -231,26 +231,6 @@ namespace FlyballRace.APIClient
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]   
         public int NumberOfRings { get; set; }
 
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v10.0.0.0))")]
-    internal class DateFormatConverter : JsonConverter<System.DateTimeOffset>
-    {
-        public override System.DateTimeOffset Read(ref System.Text.Json.Utf8JsonReader reader, System.Type typeToConvert, System.Text.Json.JsonSerializerOptions options)
-        {
-            var dateTime = reader.GetString();
-            if (dateTime == null)
-            {
-                throw new System.Text.Json.JsonException("Unexpected JsonTokenType.Null");
-            }
-
-            return System.DateTimeOffset.Parse(dateTime);
-        }
-
-        public override void Write(System.Text.Json.Utf8JsonWriter writer, System.DateTimeOffset value, System.Text.Json.JsonSerializerOptions options)
-        {
-            writer.WriteStringValue(value.ToString("yyyy-MM-dd"));
-        }
     }
 
 
