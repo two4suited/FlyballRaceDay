@@ -18,7 +18,7 @@ public class TournamentServiceTests(IntegrationTestFixture fixture) : IClassFixt
 
         var timeProvider = TimeProvider.System;
         
-        var sut = new TournamentService(dbContext, timeProvider, fixture.Logger);
+        var sut = new TournamentService(dbContext, timeProvider, fixture.Logger.CreateLogger<TournamentService>());
         var result = await sut.GetActiveTournaments();
         
         var okResult = (Ok<List<TournamentView>>)result;

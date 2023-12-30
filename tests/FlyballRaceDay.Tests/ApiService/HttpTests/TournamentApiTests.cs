@@ -6,7 +6,7 @@ using TournamentCreate = FlyballRace.APIClient.TournamentCreate;
 namespace FlyballRaceDay.Tests.ApiService.HttpTests;
 
 [CollectionDefinition("Tournament Collection",DisableParallelization = true)]
-public class TournamentCollection : ICollectionFixture<ApiServiceWebApplicationFactory<Program,FlyballRaceDayDbContext>>
+public class TournamentCollection : ICollectionFixture<ApiServiceWebApplicationFactory<Program>>
 {
     // This class has no code, and is never created. Its purpose is simply
     // to be the place to apply [CollectionDefinition] and all the
@@ -14,7 +14,7 @@ public class TournamentCollection : ICollectionFixture<ApiServiceWebApplicationF
 }
 
 [Collection("Tournament Collection")]
-public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballRaceDayDbContext> factory) 
+public class TournamentApiTests(ApiServiceWebApplicationFactory<Program> factory) 
 {
     [Fact]
     public async Task Get_ShouldReturn200()

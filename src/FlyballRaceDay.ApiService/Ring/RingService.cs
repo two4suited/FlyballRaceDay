@@ -2,7 +2,7 @@ using FlyballRaceDay.ApiService.Services;
 
 namespace FlyballRaceDay.ApiService.Ring;
 
-public class RingService(FlyballRaceDayDbContext context,ILoggerFactory loggerFactory) : DataService<Database.Ring,RingCreate,RingView>(loggerFactory,context),IRingService
+public class RingService(FlyballRaceDayDbContext context,ILogger<RingService> logger) : DataService<Database.Ring,RingCreate,RingView>(logger,context),IRingService
 {
     public async Task<IResult> CreateRing(RingCreate ring)
     {

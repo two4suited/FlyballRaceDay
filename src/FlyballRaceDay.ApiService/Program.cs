@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddLogging();
 
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
@@ -23,6 +24,8 @@ builder.Services.AddProblemDetails();
 builder.Services.AddScoped<ITournamentService,TournamentService>();
 builder.Services.AddScoped<IRingService, RingService>();
 builder.Services.AddScoped<IRaceService, RaceService>();
+
+builder.Services.AddSingleton<TimeProvider>(TimeProvider.System);
 
 builder.Host.UseSerilog();
 
@@ -47,6 +50,7 @@ if (app.Environment.IsDevelopment())
 // Configure the HTTP request pipeline.
 app.UseExceptionHandler();
 
+app.MapGet("/test", () => "Hello World!");
 app.MapGroup("/tournament").MapTournamentApis().WithTags("Tournament").WithOpenApi();
 app.MapGroup("/ring").MapRingApis().WithTags("Ring").WithOpenApi();
 app.MapGroup("/race").MapRaceApis().WithTags("Race").WithOpenApi();

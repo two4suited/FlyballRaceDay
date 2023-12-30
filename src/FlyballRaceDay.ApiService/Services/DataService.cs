@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlyballRaceDay.ApiService.Services;
 
-public abstract class DataService<TData,TCreate,TView>(ILoggerFactory loggerFactory, FlyballRaceDayDbContext context) where TData: DataModel,new() where TCreate: new() where TView: new() 
+public abstract class DataService<TData,TCreate,TView>(ILogger loggerFactory, FlyballRaceDayDbContext context) where TData: DataModel,new() where TCreate: new() where TView: new() 
 {
     protected async Task<IResult> Create(TCreate create)
     {

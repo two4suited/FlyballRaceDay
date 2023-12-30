@@ -1,9 +1,12 @@
 
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using MongoDB.Driver;
 using Testcontainers.MongoDb;
 
 namespace FlyballRaceDay.Tests.ApiService.HttpTests;
 
-public class ApiServiceWebApplicationFactory<TProgram,TDbContext> : WebApplicationFactory<TProgram>,IAsyncLifetime where TProgram :class where TDbContext : DbContext
+public class ApiServiceWebApplicationFactory<TProgram> : WebApplicationFactory<TProgram>,IAsyncLifetime where TProgram :class 
 {
     private MongoDbContainer _container  { get; set; }
 
@@ -11,19 +14,19 @@ public class ApiServiceWebApplicationFactory<TProgram,TDbContext> : WebApplicati
     {
         _container = new MongoDbBuilder().Build();
     }
-    
-
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        
-        var connectionStrings = new Dictionary<string, string>
+        builder.ConfigureServices(services =>
         {
-            { "flyballraceday", _container.GetConnectionString() }
-        };
-        var config = new ConfigurationBuilder()
-            .AddInMemoryCollection(connectionStrings)
-            .Build();
-        builder.UseConfiguration(config);
+            services.RemoveAll<DbContext>();
+            services.RemoveAll<IMongoDatabase>();
+            
+            var client = new MongoClient(_container.GetConnectionString());
+            IMongoDatabase database = client.GetDatabase(Guid.NewGuid().ToString());
+            services.AddScoped<IMongoDatabase>(d => database);
+            services.AddDbContext<FlyballRaceDayDbContext>();
+        });
+        
         builder.UseEnvironment("Tests");
     }
 

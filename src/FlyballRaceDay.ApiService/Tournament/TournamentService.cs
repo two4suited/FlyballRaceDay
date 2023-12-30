@@ -2,7 +2,7 @@ using FlyballRaceDay.ApiService.Services;
 
 namespace FlyballRaceDay.ApiService.Tournament;
 
-public class TournamentService(FlyballRaceDayDbContext context,TimeProvider timeProvider,ILoggerFactory loggerFactory) : DataService<Database.Tournament,TournamentCreate,TournamentView>(loggerFactory,context),ITournamentService
+public class TournamentService(FlyballRaceDayDbContext context,TimeProvider timeProvider,ILogger<TournamentService> logger) : DataService<Database.Tournament,TournamentCreate,TournamentView>(logger,context),ITournamentService
 {
     public async Task<IResult> CreateTournament(TournamentCreate tournamentCreate)
     {

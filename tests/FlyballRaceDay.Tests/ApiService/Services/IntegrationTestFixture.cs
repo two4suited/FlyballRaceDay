@@ -8,6 +8,7 @@ public class IntegrationTestFixture : IAsyncLifetime
     public ILoggerFactory Logger { get; set; }
     
     public Faker<Tournament> TournamentGenerator = new Faker<Tournament>()
+        .RuleFor(x => x.Id,Guid.NewGuid().ToString)
         .RuleFor(x => x.StartDate, DateTime.Now)
         .RuleFor(x => x.EventName, faker => faker.Lorem.Sentence())
         .RuleFor(x => x.EndDate, DateTime.Now)
