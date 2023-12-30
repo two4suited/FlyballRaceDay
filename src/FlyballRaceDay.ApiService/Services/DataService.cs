@@ -9,7 +9,7 @@ public abstract class DataService<TData,TCreate,TView>(ILoggerFactory loggerFact
     protected async Task<IResult> Create(TCreate create)
     {
         var newDataRecord = Mapper.Map<TCreate,TData>(create);
-        newDataRecord.Id = Guid.NewGuid();
+        newDataRecord.Id = Guid.NewGuid().ToString();
         var dataRecord = context.Set<TData>().Add(newDataRecord);
         await context.SaveChangesAsync();
         return Results.Created("Item Created",Mapper.Map<TData, TView>(dataRecord.Entity));
@@ -30,7 +30,7 @@ public abstract class DataService<TData,TCreate,TView>(ILoggerFactory loggerFact
     protected async Task<IResult> Update(TCreate create, string id)
     {
         var objectToUpdate = Mapper.Map<TCreate,TData>(create);
-        objectToUpdate.Id = new Guid(id);
+        objectToUpdate.Id = id;
         context.Update(objectToUpdate);
         await context.SaveChangesAsync();
         return Results.Ok(Mapper.Map<TData, TView>(objectToUpdate));

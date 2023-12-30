@@ -14,9 +14,9 @@ public class IntegrationTestFixture : IAsyncLifetime
         .RuleFor(x => x.NumberOfRings, faker => faker.Random.Number(1,10));
     
     public Faker<TournamentCreate> TournamentCreateGenerator = new Faker<TournamentCreate>()
-        .RuleFor(x => x.StartDate, DateOnly.FromDateTime(DateTime.Now))
+        .RuleFor(x => x.StartDate, DateTime.Now)
         .RuleFor(x => x.EventName, faker => faker.Lorem.Sentence())
-        .RuleFor(x => x.EndDate, DateOnly.FromDateTime(DateTime.Now))
+        .RuleFor(x => x.EndDate, DateTime.Now)
         .RuleFor(x => x.NumberOfRings, faker => faker.Random.Number(1,10));
     
     public async Task InitializeAsync()

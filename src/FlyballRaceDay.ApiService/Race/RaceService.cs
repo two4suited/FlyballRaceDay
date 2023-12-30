@@ -17,7 +17,7 @@ public class RaceService(FlyballRaceDayDbContext context,ILoggerFactory loggerFa
 
     public async Task<IResult> GetScheduleByTournamentId(string tournamentId)
     {
-        return await Where(x => x.TournamentId == new Guid(tournamentId));
+        return await Where(x => x.TournamentId == tournamentId);
     }
 
     public async Task<IResult> DeleteRace(string raceId)
@@ -27,13 +27,13 @@ public class RaceService(FlyballRaceDayDbContext context,ILoggerFactory loggerFa
 
     public async Task<IResult> GetUpcomingRaces(string tournamentId)
     {
-        var upcomingRaces = await Where(x => x.TournamentId == new Guid(tournamentId) && x.Done == false);
+        var upcomingRaces = await Where(x => x.TournamentId == tournamentId && x.Done == false);
         return upcomingRaces;
     }
 
     public async Task<IResult> MarkRaceAsDone(string raceId)
     {
-        var raceToUpdate = await context.Races.SingleAsync(x => x.Id == new Guid(raceId));
+        var raceToUpdate = await context.Races.SingleAsync(x => x.Id == raceId);
         raceToUpdate.Done = true;
         context.Update(raceToUpdate);
         await context.SaveChangesAsync();
@@ -43,8 +43,8 @@ public class RaceService(FlyballRaceDayDbContext context,ILoggerFactory loggerFa
 
     public async Task<IResult> AddRaceToRing(string raceId, string ringId)
     {
-        var raceToUpdate = await context.Races.SingleAsync(x => x.Id == new Guid(raceId));
-        raceToUpdate.RingId = new Guid(ringId);
+        var raceToUpdate = await context.Races.SingleAsync(x => x.Id == raceId);
+        raceToUpdate.RingId = ringId;
         context.Update(raceToUpdate);
         await context.SaveChangesAsync();
         

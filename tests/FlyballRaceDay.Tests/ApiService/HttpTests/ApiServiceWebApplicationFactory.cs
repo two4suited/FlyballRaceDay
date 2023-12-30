@@ -15,9 +15,13 @@ public class ApiServiceWebApplicationFactory<TProgram,TDbContext> : WebApplicati
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
+        
+        var connectionStrings = new Dictionary<string, string>
+        {
+            { "flyballraceday", _container.GetConnectionString() }
+        };
         var config = new ConfigurationBuilder()
-            .AddInMemoryCollection(new Dictionary<string, string?>
-                { { "ConnectionStrings:flyballraceday", _container.GetConnectionString() } })
+            .AddInMemoryCollection(connectionStrings)
             .Build();
         builder.UseConfiguration(config);
         builder.UseEnvironment("Tests");

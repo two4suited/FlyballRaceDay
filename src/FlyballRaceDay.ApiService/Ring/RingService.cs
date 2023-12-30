@@ -16,7 +16,7 @@ public class RingService(FlyballRaceDayDbContext context,ILoggerFactory loggerFa
 
     public async Task<IResult> GetRingByTournamentId(string tournamentId)
     {
-        return await Where(x => x.TournamentId == new Guid(tournamentId));
+        return await Where(x => x.TournamentId == tournamentId);
     }
 
     public async Task<IResult> UpdateRing(RingCreate ring, string id)

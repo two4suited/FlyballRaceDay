@@ -17,7 +17,7 @@ public class TournamentCollection : ICollectionFixture<ApiServiceWebApplicationF
 public class TournamentApiTests(ApiServiceWebApplicationFactory<Program,FlyballRaceDayDbContext> factory) 
 {
     [Fact]
-    public async Task Create_ShouldReturn200()
+    public async Task Get_ShouldReturn200()
     {
         using var client = factory.CreateClient();
 

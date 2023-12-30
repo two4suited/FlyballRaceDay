@@ -8,7 +8,7 @@ Content-Type: application/json
   "EventName": "Turkey Time",
   "StartDate": "2024-11-23",
   "EndDate": "2024-11-23",
-  "NumberOfLanes" : 2
+  "NumberOfRings" : 2
 }
 ###
  GET {{url}}
@@ -17,4 +17,4 @@ Content-Type: application/json
  DELETE {{url}}/1
 
 ###
-GET {{url}}/1
+GET {{url}}/150b4748-bb8d-4851-b48c-436154ce8eb7

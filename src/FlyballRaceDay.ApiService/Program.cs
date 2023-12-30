@@ -15,6 +15,7 @@ builder.Services.AddSwaggerGen();
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
 builder.AddMongoDBClient(ServicesLocator.Database);
+builder.Services.AddDbContext<FlyballRaceDayDbContext>();
 //builder.AddNpgsqlDbContext<FlyballRaceDayDbContext>(ServicesLocator.Database);
 
 // Add services to the container.
@@ -52,6 +53,10 @@ app.MapGroup("/race").MapRaceApis().WithTags("Race").WithOpenApi();
 
 app.MapDefaultEndpoints();
 
+
+
 app.Run();
+
+
 
 public partial class Program { }

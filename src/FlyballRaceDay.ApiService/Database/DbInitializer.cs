@@ -15,7 +15,7 @@ internal class DbInitializer
         for (var i = 1; i <= numberOfTournaments; i++)
         {
             var numberOfRings = random.Next(1, 4);
-            var tourneyId = Guid.NewGuid();
+            var tourneyId = Guid.NewGuid().ToString();
              
             dbContext.Tournaments.Add(new Tournament()
             {
@@ -30,7 +30,7 @@ internal class DbInitializer
             {
                 dbContext.Rings.Add(new Ring()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = Guid.NewGuid().ToString(),
                     TournamentId = tourneyId,
                     Color = "Blue",
                     Name = "Blue Ring"
@@ -50,7 +50,7 @@ internal class DbInitializer
 
                 dbContext.Races.Add(new Race()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = Guid.NewGuid().ToString(),
                     Breakout = "20.0",
                     Division = "Regular 1",
                     BreakTimeInMinutes = minutes,
