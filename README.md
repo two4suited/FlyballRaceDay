@@ -4,7 +4,7 @@ This is an application to keep track what races are up next at a flyball tournam
 It was built using .net 8 mininimal api's and blazor.
 
 ## Projects
-- FlyballRaceDay.ApiService - Minimal Api Project with EF Core PostgreSQL
+- FlyballRaceDay.ApiService - Minimal Api Project with EF Core MongoDb
 - FlyballRaceDay.AppHost - Aspire Project for local development
 - FlyballRaceDay.ServiceDefaults - Service Collection Defaults for project for middleware
 - FlyballRaceDay.Shared - Models and API Service Client that is shared between Server and Client Blazor Projects
