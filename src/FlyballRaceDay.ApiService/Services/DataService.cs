@@ -21,6 +21,12 @@ public abstract class DataService<TData,TCreate,TView>(ILogger loggerFactory, Fl
         return Results.Ok(queryResults.MapList(Mapper.Map<TData, TView>));
     }
 
+    protected async Task<IResult> All()
+    {
+        var all =  await context.Set<TData>().ToListAsync();
+        return Results.Ok(all);
+    }
+
     protected async Task<IResult> GetById(string id)
     {
         var objectReturn = await context.Set<TData>().FindAsync(id);

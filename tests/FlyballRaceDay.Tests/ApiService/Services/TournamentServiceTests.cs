@@ -10,8 +10,8 @@ public class TournamentServiceTests(IntegrationTestFixture fixture) : IClassFixt
         var dbContext = provider.CreateDbContext();
 
         var currentDayTournament = fixture.TournamentGenerator.Generate();
-        currentDayTournament.EndDate = DateTime.Now;
-        currentDayTournament.StartDate = DateTime.Now;
+        currentDayTournament.EndDate = DateTime.Now.Date;
+        currentDayTournament.StartDate = DateTime.Now.Date;
 
         dbContext.Tournaments.Add(currentDayTournament);
         await dbContext.SaveChangesAsync();

@@ -101,7 +101,7 @@ namespace FlyballRace.APIClient
         [JsonPropertyName("tournamentId")]
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]   
-        public int TournamentId { get; set; }
+        public string TournamentId { get; set; }
 
         [JsonPropertyName("raceNumber")]
 
@@ -136,7 +136,7 @@ namespace FlyballRace.APIClient
         [JsonPropertyName("ringId")]
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]   
-        public int RingId { get; set; }
+        public string RingId { get; set; }
 
         [JsonPropertyName("done")]
 
@@ -162,7 +162,7 @@ namespace FlyballRace.APIClient
         [JsonPropertyName("tournamentId")]
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]   
-        public int TournamentId { get; set; }
+        public string TournamentId { get; set; }
 
         [JsonPropertyName("name")]
 
