@@ -25,9 +25,9 @@ It was built using .net 8 mininimal api's and blazor.
 - [Redis](https://redis.io/docs/connect/clients/dotnet/)
 - [Blazor Quick Grid](https://aspnet.github.io/quickgridsamples/)
 - [Serilog](https://serilog.net/)
-- [EF Core PostgresSQL](https://www.npgsql.org/efcore/)
+- [EF Core MongoDB](https://www.mongodb.com/docs/entity-framework/current/)
 - [Faker](https://github.com/bchavez/Bogus)
-- [Test Containes](https://testcontainers.com/)
+- [Test Containers](https://testcontainers.com/)
 - [NSubstitute](https://nsubstitute.github.io/)
 - [Shouldly](https://github.com/shouldly/shouldly)
 
