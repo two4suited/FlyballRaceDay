@@ -35,8 +35,9 @@ namespace FlyballRace.APIClient
         [Put("/race/{raceId}/{ringId}")]
         Task RacePUT(string raceId, string ringId);
 
+        [Headers("Accept: application/json")]
         [Post("/ring")]
-        Task RingPOST([Body] RingCreate body);
+        Task<IApiResponse<RingView>> RingCreate([Body] RingCreate body);
 
         [Delete("/ring")]
         Task RingDELETE([Query] string id);
@@ -157,6 +158,27 @@ namespace FlyballRace.APIClient
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v10.0.0.0))")]
     public partial class RingCreate
+    {
+
+        [JsonPropertyName("tournamentId")]
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]   
+        public string TournamentId { get; set; }
+
+        [JsonPropertyName("name")]
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]   
+        public string Name { get; set; }
+
+        [JsonPropertyName("color")]
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]   
+        public string Color { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v10.0.0.0))")]
+    public partial class RingView
     {
 
         [JsonPropertyName("tournamentId")]

@@ -33,6 +33,11 @@ public class ApiServiceWebApplicationFactory<TProgram> : WebApplicationFactory<T
         .RuleFor(x => x.RingId, Guid.NewGuid().ToString())
         .RuleFor(x => x.BreakTimeInMinutes, 0)
         .RuleFor(x => x.IsBreak, false);
+
+    public Faker<RingCreate> RingCreateGenerator = new Faker<RingCreate>()
+        .RuleFor(x => x.TournamentId, Guid.NewGuid().ToString())
+        .RuleFor(x => x.Color, "Blue")
+        .RuleFor(x => x.Name, "Blue Ring");
     
     
     public ApiServiceWebApplicationFactory()

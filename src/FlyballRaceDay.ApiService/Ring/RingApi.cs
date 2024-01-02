@@ -6,7 +6,7 @@ public static class RingApi
 {
     public static RouteGroupBuilder MapRingApis(this RouteGroupBuilder group)
     {
-        group.MapPost("/", (RingCreate ring, IRingService service) => service.CreateRing(ring));
+        group.MapPost("/", (RingCreate ring, IRingService service) => service.CreateRing(ring)).WithName("Ring-Create").Produces<RingView>(StatusCodes.Status201Created);
         group.MapDelete("/", (string id, IRingService service) => service.DeleteRing(id));
         group.MapGet("{tournamentId}/GetRings",
             (IRingService service, string tournamentId) => service.GetRingByTournamentId(tournamentId));
